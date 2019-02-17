@@ -1,0 +1,16 @@
+{
+    "extends": "../tsconfig.common.json",
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "noImplicitAny": false,
+        "noImplicitThis": false,
+        "noEmit": true,
+        "noEmitOnError": false,
+        "noImplicitReturns": false,
+        "noUnusedLocals": false,
+    },
+    "include": [
+        "*.ts",
+        "**/*.spec.ts"
+    ]
+}

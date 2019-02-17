@@ -1,0 +1,9 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+        "completed-docs": false,
+        "no-floating-promises": false,
+        "no-unsafe-any": false,
+        "no-void-expression": false
+    }
+}

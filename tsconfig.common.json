@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "importHelpers": true,
+        "inlineSources": true,
+        "keyofStringsOnly": true,
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noEmitOnError": false,
+        "noErrorTruncation": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "pretty": true,
+        "preserveConstEnums": true,
+        "removeComments": false,
+        "resolveJsonModule": true,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "stripInternal": true,
+        "target": "es6",
+    },
+    "typeAcquisition": {
+        "enable": true,
+        "include": [ "node" ],
+    },
+    "exclude":[
+        "node_modules"
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "01 - Device Discovery",
+            "program": "${workspaceFolder}/node_modules/.bin/ts-node",
+            "args": [
+                "./examples/01-device-discovery/example-device-discovery.ts"
+            ],
+            "env": {
+                "TS_PROJECT": "./examples/tsconfig.json",
+            },
+            "outputCapture": "std",
+            "sourceMaps": true,
+            "showAsyncStacks": true,
+            "smartStep": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "02 - Events",
+            "program": "${workspaceFolder}/node_modules/.bin/ts-node",
+            "args": [
+                "./examples/02-events/example-events.ts"
+            ],
+            "env": {
+                "TS_PROJECT": "./examples/tsconfig.json"
+            },
+            "outputCapture": "std",
+            "sourceMaps": true,
+            "showAsyncStacks": true,
+            "smartStep": false
+        }
+    ]
+}

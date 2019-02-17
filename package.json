@@ -1,0 +1,70 @@
+{
+  "name": "ortho-remote",
+  "version": "0.1.0",
+  "description": "Client package for connecting to Ortho Remote Control by Teenage Engineering",
+  "license": "MIT",
+  "private": true,
+  "repository": "pryomoax/ortho-remote-node",
+  "author": {
+    "name": "Paul Bates",
+    "email": "paul.a.bates@gmail.com"
+  },
+  "keywords": [
+    "senic",
+    "ortho",
+    "ortho remote",
+    "rocket ortho remote",
+    "ble",
+    "iot",
+    "dial",
+    "knob",
+    "volume"
+  ],
+  "main": "lib/index.js",
+  "types": "dts/index.d.ts",
+  "dependencies": {
+    "check-types": "^8.0",
+    "debug": "^3.2",
+    "noble": "https://github.com/Timeular/noble-mac#^0.0.4",
+    "tslib": "^1.9",
+    "weak": "^1.0"
+  },
+  "devDependencies": {
+    "@types/check-types": "^7.3",
+    "@types/debug": "^4.1",
+    "@types/del": "^3.0",
+    "@types/gulp": "^4.0",
+    "@types/gulp-bump": "^2.8",
+    "@types/gulp-json-editor": "^2.2",
+    "@types/merge2": "^1.1",
+    "@types/minimist": "^1.2",
+    "@types/noble": "^0.0.39",
+    "@types/node": "^10.12",
+    "@types/weak": "^1.0",
+    "chai": "^4.2",
+    "chai-as-promised": "^7.1",
+    "chalk": "^2.4",
+    "del": "^3.0",
+    "gulp": "^4.0",
+    "gulp-bump": "^3.1",
+    "gulp-json-editor": "^2.5",
+    "gulp-tslint": "^8.1",
+    "gulp-typescript": "^5.0",
+    "merge2": "^1.2.3",
+    "minimist": "^1.2.0",
+    "mocha": "^5.2",
+    "mocha-typescript": "^1.1",
+    "nyc": "^13.0",
+    "ts-node": "^8.0",
+    "tslint": "^5.11",
+    "typescript": "^3.3"
+  },
+  "resolutions": {
+    "xpc-connection": "sandeepmistry/node-xpc-connection#pull/26/head"
+  },
+  "scripts": {
+    "device-discovery": "ts-node --project ./examples/tsconfig.json ./examples/01-device-discovery/example-device-discovery.ts",
+    "events": "ts-node --project ./examples/tsconfig.json ./examples/02-events/example-events.ts",
+    "test": "TS_NODE_PROJECT=./test/tsconfig.json nyc mocha -r ts-node/register -r test/prepare test/**/*.spec.ts test/*.spec.ts --exit"
+  }
+}
