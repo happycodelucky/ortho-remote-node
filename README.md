@@ -2,7 +2,7 @@
 ![Node](https://img.shields.io/npm/v/ortho-remote.svg?style=for-the-badge&label=version)
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/pryomoax/ortho-remote-node/graphs/commit-activity)
 
-Ortho Remote client package for Node.js for interacting with [Teenage Engineering](https://www.teenageengineering.com)'s BLE-MIDI [Ortho Remote](https://www.teenageengineering.com/products/orthoremote)
+Node.js package for interfacing with [Teenage Engineering](https://www.teenageengineering.com)'s [Ortho Remote](https://www.teenageengineering.com/products/orthoremote)
 
 The `ortho-remote` package is designed to support multiple devices simultaneously, provide a high-level abstraction for interaction events, as well as provide access to the raw [BLE-MIDI](https://github.com/skratchdot/ble-midi/blob/master/pdf/Apple-Bluetooth-Low-Energy-MIDI-Specification.pdf) data.
 
