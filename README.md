@@ -1,8 +1,8 @@
-![Ortho Remote](https://github.com/pryomoax/ortho-remote-node/raw/master/assets/ortho.png)
-
 [![License](https://img.shields.io/github/license/pryomoax/ortho-remote-node.svg?style=for-the-badge)](./LICENSE)
 ![Node](https://img.shields.io/npm/v/ortho-remote.svg?style=for-the-badge&label=version)
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/pryomoax/ortho-remote-node/graphs/commit-activity)
+
+![Ortho Remote](https://github.com/pryomoax/ortho-remote-node/raw/master/assets/ortho.png)
 
 Ortho Remote client package for Node.js for interacting with [Teenage Engineering](https://www.teenageengineering.com)'s BLE-MIDI [Ortho Remote](https://www.teenageengineering.com/products/orthoremote)
 
