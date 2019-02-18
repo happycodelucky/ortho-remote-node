@@ -4,7 +4,7 @@
 
 Ortho Remote client package for Node.js for interacting with [Teenage Engineering](https://www.teenageengineering.com)'s BLE-MIDI [Ortho Remote](https://www.teenageengineering.com/products/orthoremote)
 
-The `ortho-remote` package is designed to support multiple devices simultaneously, provide a high-level abstraction for interaction events, as well as provide access to the raw [BLE-MIDI](./specs/rp52public.pdf) data.
+The `ortho-remote` package is designed to support multiple devices simultaneously, provide a high-level abstraction for interaction events, as well as provide access to the raw [BLE-MIDI](https://github.com/skratchdot/ble-midi/blob/master/pdf/Apple-Bluetooth-Low-Energy-MIDI-Specification.pdf) data.
 
 For more information on BLE-MIDI see [midi.org](https://www.midi.org/midi/specifications/item/bluetooth-le-midi)
 
@@ -208,7 +208,7 @@ if (await device.connect(orthoConfig)) {
 }
 ```
 
-To access the [BLE-MIDI](./specs/rp52public.pdf) data in parsed or it's raw form, use the `midi` event
+To access the [BLE-MIDI](https://github.com/skratchdot/ble-midi/blob/master/pdf/Apple-Bluetooth-Low-Energy-MIDI-Specification.pdf) data in parsed or it's raw form, use the `midi` event
 
 ```typescript
 import { MidiData } from 'ortho-remote'
