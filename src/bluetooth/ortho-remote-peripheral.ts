@@ -1,3 +1,4 @@
+import * as check from 'check-types'
 import * as createDebugLogger from 'debug'
 
 import { Characteristic, Peripheral, Service } from 'noble'
@@ -207,7 +208,7 @@ export class OrthoRemotePeripheral extends EventEmitter {
      *
      * @param data - data to write
      *
-     * @return `true` if the peripheral was connected to
+     * @return `true` if the data was written successfully
      */
     async write(data: MidiData): Promise<boolean> {
         this.connectionRequiredToProceed()
@@ -218,7 +219,7 @@ export class OrthoRemotePeripheral extends EventEmitter {
                 .find(characteristic => characteristic.uuid === BleMidiServiceCharacteristic.MidiDataIO)
             if (midiCharacteristic) {
                 return new Promise<boolean>((resolve, reject) => {
-                    midiCharacteristic.write(toMidiDataPacket(data), false, (err) => {
+                    midiCharacteristic.write(toMidiDataPacket(data), true, (err) => {
                         if (!err) {
                             resolve(true)
                         } else {
@@ -232,6 +233,26 @@ export class OrthoRemotePeripheral extends EventEmitter {
         }
 
         return false
+    }
+
+    /**
+     * Sets the Ortho Remote rotation value
+     *
+     * @param value - rotation value
+     *
+     * @return `true` if the value was written successfully
+     */
+    async setRotation(value: number): Promise<boolean> {
+        if (!check.inRange(value, 0, ROTATION_POINTS)) {
+            throw new TypeError(`setRotation(value) should be between 0-${ROTATION_POINTS}`)
+        }
+
+        return this.write({
+            timestamp: Date.now(),
+            message: MidiMessage.ControllerChange,
+            channel: 0,
+            data: new Uint8Array([ VOLUME_CONTROLLER, value ]),
+        })
     }
 
     //
