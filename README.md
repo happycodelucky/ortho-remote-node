@@ -10,7 +10,22 @@ The `ortho-remote` package is designed to support multiple devices simultaneousl
 
 For more information on BLE-MIDI see [midi.org](https://www.midi.org/midi/specifications/item/bluetooth-le-midi)
 
-[TOC]
+- [Installation](#installation)
+  * [Node.js 10.x](#nodejs-10x)
+    + [Overriding Dependencies](#overriding-dependencies)
+- [Troubleshooting](#troubleshooting)
+  * [Linux Permissions](#linux-permissions)
+  * [Low Power States](#low-power-states)
+  * [Persistent Pairing (Not Advertising)](#persistent-pairing--not-advertising-)
+- [Getting Started](#getting-started)
+  * [Examples](#examples)
+  * [Getting Connected](#getting-connected)
+  * [Listening for Events](#listening-for-events)
+  * [Accessing Raw Data](#accessing-raw-data)
+- [API](#api)
+- [Known Issues](#known-issues)
+  * [Rotation Limitations](#rotation-limitations)
+  * [Event Filtering](#event-filtering)
 
 # Installation
 To install `ortho-remote` for use within your project use [yarn](https://yarnpkg.com) or [npm](https://npmjs.com)
