@@ -565,6 +565,7 @@ export interface OrthoRemotePeripheral extends EventEmitter {
 
 /**
  * Parses BLE-MIDI a data packet and returns one or more piece of MidiData
+ * @internal
  *
  * @param packetData - BLE-MIDI packet to parese
  *

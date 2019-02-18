@@ -1,5 +1,5 @@
 /**
- * MIDI data
+ * BLE MIDI data
  */
 export interface MidiData {
     /**

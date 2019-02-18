@@ -21,26 +21,31 @@ const debugBluetooth = createDebugLogger('orthoRemote/bluetooth')
 export class DeviceDiscoveryManager extends EventEmitter {
     /**
      * Device discovery state
+     * @internal
      */
     private managerDiscoveryState: DeviceDiscoveryState = DeviceDiscoveryState.Initial
 
     /**
      * Active discovery sessions
+     * @internal
      */
     private readonly activeSessions: Set<DeviceDiscoverySession> = new Set()
 
     /**
      * All devices discovered, index by device ID
+     * @internal
      */
     private readonly discoveredDevicesMap: Map<string, OrthoRemote> = new Map()
 
     /**
      * Indiciates if a discovery should be performed when the BT radio is powered on
+     * @internal
      */
     private discoverWhenPoweredOnRequested: boolean = false
 
     /**
      * There should be no need to construct a new device manager. Use `defaultManager`
+     * @internal
      */
     private constructor() {
         super()
@@ -155,6 +160,8 @@ export class DeviceDiscoveryManager extends EventEmitter {
      * Stops and removes a session from the list of managed sessions.
      * When all session have been removed discovery will cease.
      *
+     * Use `DeviceDiscoverySession.stop`
+     *
      * @param session - session to remove
      */
     stopDiscoverySession(session: DeviceDiscoverySession) {
@@ -200,6 +207,7 @@ export class DeviceDiscoveryManager extends EventEmitter {
 
     /**
      * Initializes bluetooth on the host hardware, ensuring it's powered on before initiating discovery
+     * @internal
      */
     private initializeBluetooth() {
         // Only initialized if the discovery was never started
@@ -262,6 +270,7 @@ export class DeviceDiscoveryManager extends EventEmitter {
 
     /**
      * Kicks off device discovery
+     * @internal
      */
     private discoverDevices() {
         if (this.managerDiscoveryState !== DeviceDiscoveryState.Ready) {

@@ -40,40 +40,48 @@ export class DeviceDiscoverySession extends EventEmitter {
 
     /**
      * Options supplied when starting a new discovery
+     * @internal
      */
     private readonly discoveryOptions: DeviceDiscoverySessionOptions
 
     /**
      * Timeout timer when a timeout was specified
+     * @internal
      */
     private timeoutTimer?: NodeJS.Timer
 
     /**
      * Mutable internal discovery state
+     * @internal
      */
     private sessionDiscoveryState: DeviceDiscoveryState
 
     /**
      * Internal map of discovered devices, and devices to ignore when seen subsequent times
+     * @internal
      */
     private readonly sessionDiscoveredDevicesMap: Map<string, OrthoRemote> = new Map()
 
     /**
      * Promise for first call to waitForFirstDevice
+     * @internal
      */
     private waitForDevicePromise?: Promise<OrthoRemote>
 
     /**
      * Callback for found device
+     * @internal
      */
     private waitForDeviceResolveCallback?: (device: OrthoRemote) => void
 
     /**
      * Callback for timeouts or other rejections
+     * @internal
      */
     private waitForDeviceRejectCallback?: (error: Error) => void
 
     /**
+     * @internal
      * @param manager - vending discovery manager
      * @param [options] - session options
      */
@@ -263,6 +271,7 @@ export class DeviceDiscoverySession extends EventEmitter {
 
     /**
      * Called when the session times out
+     * @internal
      */
     private onSessionTimeout() {
         debug('Discovery session timed out')

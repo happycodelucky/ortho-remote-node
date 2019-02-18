@@ -1,5 +1,6 @@
 /**
  * Connection status of a Ortho Remote peripheral
+ * @internal
  */
 export enum OrthoRemotePeriperalConnectedStatus {
     /**

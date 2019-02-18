@@ -3,6 +3,7 @@
  */
 export class OrthoRemoteError extends Error {
     /**
+     * @internal
      * @param message - error message
      * @param name - name given to the error
      */

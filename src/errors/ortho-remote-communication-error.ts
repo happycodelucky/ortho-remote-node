@@ -42,12 +42,14 @@ export class OrthoRemoteCommunicationError extends OrthoRemoteError {
      * Device error code
      */
     readonly code: OrthoRemoteCommunicationErrorCode
+
     /**
      * Device identifier
      */
     readonly id: string
 
     /**
+     * @internal
      * @param code - connection error code
      * @param id - device ID for the connection error
      */
