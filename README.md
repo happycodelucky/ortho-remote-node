@@ -10,6 +10,8 @@ The `ortho-remote` package is designed to support multiple devices simultaneousl
 
 For more information on BLE-MIDI see [midi.org](https://www.midi.org/midi/specifications/item/bluetooth-le-midi)
 
+[TOC]
+
 # Installation
 To install `ortho-remote` for use within your project use [yarn](https://yarnpkg.com) or [npm](https://npmjs.com)
 
@@ -46,15 +48,15 @@ $ yarn install
 # Troubleshooting
 It's worth adding help on troubleshooting before you get started. There may be times your Ortho Remote cannot be discovered for various reasons.
 
-### Linux Permissions
+## Linux Permissions
 
 If using Linux be sure to check out  [noble](https://github.com/noble/noble) for set up and configuration instructions
 
-### Low Power States
+## Low Power States
 
 A Ortho Remote may have entered a **low-power state**. Simply interact with the dial or click the dial button to wake a Ortho Remote device up.
 
-### Persistent Pairing (Not Advertising)
+## Persistent Pairing (Not Advertising)
 
 BLE-MIDI devices on some OSes can retain paired connections. This can be problematic because once paired Ortho Remote will not be discoverable, leading to timed out connections.
 
@@ -211,10 +213,10 @@ Coming Soon
 
 Ortho Remote was implemented for MIDI applications, and although some interpretation and abstractions have been implemented there are some current restrictions. Hopefully can be resolved in the future
 
-### Rotation Limitations
+## Rotation Limitations
 The package cannot set back a `rotation` value back to the Ortho Remote. This makes some applications difficult when needing to sync a existing value to an `OrthoRemote` object. For example, matching a volume level between devices.
 
-### Event Filtering
+## Event Filtering
 As humans we are not to precise with some interactions. Ortho Remotes can send rotation events when depressing/releasing the Ortho Remote button.
 
 I hope to implement event filtering as an option to make it more reliable to use for some applications
