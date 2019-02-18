@@ -1,4 +1,4 @@
-import { MidiData } from '../model/midi-data'
+import { MidiData } from '../midi/midi-data'
 import { OrthoRemote } from '../ortho-remote'
 import { OrthoRemoteError } from '../errors/ortho-remote-error'
 

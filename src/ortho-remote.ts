@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events'
 
-import { MidiData } from './model/midi-data'
+import { MidiData } from './midi/midi-data'
 import {
     OnBatteryLeveCallback,
     OnErrorCallback,

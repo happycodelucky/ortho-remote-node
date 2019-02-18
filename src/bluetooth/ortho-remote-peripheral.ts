@@ -6,10 +6,11 @@ import { EventEmitter } from 'events'
 import { DEVICE_CONNECT_TIMEOUT_MS } from '../defaults'
 import { BatteryStatusServiceCharacteristic } from './ortho-remote-gatt'
 import { BleMidiServiceCharacteristic } from './ortho-remote-gatt'
-import { MidiData } from '../model/midi-data'
+import { MidiData, parseMidiDataPacket, toMidiDataPacket } from '../midi/midi-data'
 import { OrthoRemoteCommunicationError, OrthoRemoteCommunicationErrorCode } from '../errors/ortho-remote-communication-error'
 import { OrthoRemotePeriperalConnectedStatus } from './ortho-remote-connection-status'
 import { PeripheralService } from './ortho-remote-gatt'
+import { MidiMessage } from '../midi/midi-message';
 
 // Create debug logger
 const debug = createDebugLogger('orthoRemote/bluetooth')
@@ -17,12 +18,9 @@ const debug = createDebugLogger('orthoRemote/bluetooth')
 // Number of points to accumulate one
 const ROTATION_POINTS = 0x7F
 
-// Note/Status byte values
-const BUTTON_NOTE = 0x3C
-const BUTTON_PRESSED_STATUS = 0x10
-const BUTTON_RELEASED_STATUS = 0x00
-const ROTATE_NOTE = 0x01
-const ROTATE_STATUS = 0x30
+// MIDI Values
+const BUTTON_KEY = 0b00111100
+const VOLUME_CONTROLLER = 0b00000001
 
 /**
  * Handler function for characteristic notify BLE subscriptions
@@ -191,6 +189,8 @@ export class OrthoRemotePeripheral extends EventEmitter {
 
     /**
      * Connects to the device, if not already connected
+     *
+     * @return `true` if the peripheral was connected to
      */
     async connect(): Promise<boolean> {
         // Check there still is an associated peripheral
@@ -200,6 +200,38 @@ export class OrthoRemotePeripheral extends EventEmitter {
         }
 
         return await this.connectToPeriperal()
+    }
+
+    /**
+     * Writes MIDI data to the peripheral
+     *
+     * @param data - data to write
+     *
+     * @return `true` if the peripheral was connected to
+     */
+    async write(data: MidiData): Promise<boolean> {
+        this.connectionRequiredToProceed()
+
+        const midiService = this.internalPeripheral.services.find(service => service.uuid === PeripheralService.BleMidi)
+        if (midiService) {
+            const midiCharacteristic = midiService.characteristics
+                .find(characteristic => characteristic.uuid === BleMidiServiceCharacteristic.MidiDataIO)
+            if (midiCharacteristic) {
+                return new Promise<boolean>((resolve, reject) => {
+                    midiCharacteristic.write(toMidiDataPacket(data), false, (err) => {
+                        if (!err) {
+                            resolve(true)
+                        } else {
+                            reject(new OrthoRemoteCommunicationError(
+                                OrthoRemoteCommunicationErrorCode.Bluetooth, this.id, err))
+                        }
+                    })
+                })
+
+            }
+        }
+
+        return false
     }
 
     //
@@ -226,7 +258,6 @@ export class OrthoRemotePeripheral extends EventEmitter {
         // About to attempt connection
         this.internalConnectedState = OrthoRemotePeriperalConnectedStatus.Connecting
 
-        const self = this
         this.pendingConnection = new Promise<Boolean>((resolve, reject) => {
             // Set up a connection timeout timer in case connection does not succeed
             let timeout = false;
@@ -234,19 +265,19 @@ export class OrthoRemotePeripheral extends EventEmitter {
                 timeout = true
 
                 // If the periperal is differnet, it was an aborted connection
-                if (peripheral !== self.internalPeripheral) {
+                if (peripheral !== this.internalPeripheral) {
                     reject(new OrthoRemoteCommunicationError(
-                        OrthoRemoteCommunicationErrorCode.Disconnected, self.id))
+                        OrthoRemoteCommunicationErrorCode.Disconnected, this.id))
 
                     return
                 }
 
                 // Disconnected
-                self.disconnect()
+                this.disconnect()
                 this.internalConnectedState = OrthoRemotePeriperalConnectedStatus.Disconnected
 
                 reject(new OrthoRemoteCommunicationError(
-                    OrthoRemoteCommunicationErrorCode.ConnectionTimeout, self.id))
+                    OrthoRemoteCommunicationErrorCode.ConnectionTimeout, this.id))
             }, DEVICE_CONNECT_TIMEOUT_MS * 1000)
 
             // When connected
@@ -257,9 +288,9 @@ export class OrthoRemotePeripheral extends EventEmitter {
                 }
 
                 // Make sure we are connecting to the right device
-                if (peripheral !== self.internalPeripheral) {
+                if (peripheral !== this.internalPeripheral) {
                     reject(new OrthoRemoteCommunicationError(
-                        OrthoRemoteCommunicationErrorCode.Disconnected, self.id))
+                        OrthoRemoteCommunicationErrorCode.Disconnected, this.id))
 
                     return
                 }
@@ -269,8 +300,8 @@ export class OrthoRemotePeripheral extends EventEmitter {
 
                 // Now connected, listen for disconnects
                 peripheral.on('disconnect', () => {
-                    if (peripheral === self.internalPeripheral) {
-                        debug(`Disconnected from device ${self.id}`)
+                    if (peripheral === this.internalPeripheral) {
+                        debug(`Disconnected from device ${this.id}`)
                         this.disconnect()
                     }
                 })
@@ -292,9 +323,9 @@ export class OrthoRemotePeripheral extends EventEmitter {
                 debug(`Discovered ${services.length} services on device ${peripheral.uuid}`)
 
                 // Make sure we are connecting to the right device
-                if (peripheral !== self.internalPeripheral) {
+                if (peripheral !== this.internalPeripheral) {
                     reject(new OrthoRemoteCommunicationError(
-                        OrthoRemoteCommunicationErrorCode.Disconnected, self.id))
+                        OrthoRemoteCommunicationErrorCode.Disconnected, this.id))
 
                     return
                 }
@@ -314,9 +345,9 @@ export class OrthoRemotePeripheral extends EventEmitter {
                 }))
 
                 // Make sure we are connecting to the right device
-                if (peripheral !== self.internalPeripheral) {
+                if (peripheral !== this.internalPeripheral) {
                     reject(new OrthoRemoteCommunicationError(
-                        OrthoRemoteCommunicationErrorCode.Disconnected, self.id))
+                        OrthoRemoteCommunicationErrorCode.Disconnected, this.id))
 
                     return;
                 }
@@ -336,9 +367,9 @@ export class OrthoRemotePeripheral extends EventEmitter {
                 await Promise.all(awaitBindings)
 
                 // Make sure we are connecting to the right device
-                if (peripheral !== self.internalPeripheral) {
+                if (peripheral !== this.internalPeripheral) {
                 reject(new OrthoRemoteCommunicationError(
-                    OrthoRemoteCommunicationErrorCode.Disconnected, self.id))
+                    OrthoRemoteCommunicationErrorCode.Disconnected, this.id))
 
                     return;
                 }
@@ -355,7 +386,7 @@ export class OrthoRemotePeripheral extends EventEmitter {
 
                 if (err) {
                     reject(new OrthoRemoteCommunicationError(
-                        OrthoRemoteCommunicationErrorCode.Bluetooth, self.id, err))
+                        OrthoRemoteCommunicationErrorCode.Bluetooth, this.id, err))
                 }
             })
         }) as Promise<boolean>
@@ -369,20 +400,20 @@ export class OrthoRemotePeripheral extends EventEmitter {
         })
     }
 
-    // /**
-    //  * Throws an error if the device is not fully connected, ensuring code following this call can operated on
-    //  * a connected device.
-    //  */
-    // private connectionRequiredToProceed() {
-    //     switch (this.connectedState) {
-    //         case OrthoRemotePeriperalConnectedStatus.Connected:
-    //             return
-    //         case OrthoRemotePeriperalConnectedStatus.Connecting:
-    //             throw new OrthoRemoteCommunicationError(OrthoRemoteCommunicationErrorCode.NotConnected, this.id)
-    //         case OrthoRemotePeriperalConnectedStatus.Disconnected:
-    //             throw new OrthoRemoteCommunicationError(OrthoRemoteCommunicationErrorCode.Disconnected, this.id)
-    //     }
-    // }
+    /**
+     * Throws an error if the device is not fully connected, ensuring code following this call can operated on
+     * a connected device.
+     */
+    private connectionRequiredToProceed() {
+        switch (this.connectedState) {
+            case OrthoRemotePeriperalConnectedStatus.Connected:
+                return
+            case OrthoRemotePeriperalConnectedStatus.Connecting:
+                throw new OrthoRemoteCommunicationError(OrthoRemoteCommunicationErrorCode.NotConnected, this.id)
+            case OrthoRemotePeriperalConnectedStatus.Disconnected:
+                throw new OrthoRemoteCommunicationError(OrthoRemoteCommunicationErrorCode.Disconnected, this.id)
+        }
+    }
 
     /**
      * Subscribes to a characteristic with a notify handler
@@ -489,33 +520,40 @@ export class OrthoRemotePeripheral extends EventEmitter {
     /**
      * Notify handler for BLE MIDI IO data
      *
-     * @param data - BLE MIDI data
+     * @param data - MIDI data
      * @param characteristic - notification characteristic
      */
     private onMidiDataIONotify(data: Buffer, characteristic: Characteristic) {
-        const midiData = parseBleMidiIOData(data)
+        const midiPackets = parseMidiDataPacket(data)
 
-        if (midiData.length > 0) {
-            this.emit('midi', midiData[0], data)
+        if (midiPackets.length > 0) {
+            const midiData = midiPackets[0]
+            this.emit('midi', midiData, data)
 
-            const status = midiData[0].status & 0x7F
-            const note = midiData[0].data[0] & 0x7F
-            const velocity = midiData[0].data[1] & 0x7F
-
-            if (note === BUTTON_NOTE) {
-                if (status === BUTTON_PRESSED_STATUS || status === BUTTON_RELEASED_STATUS) {
-                    const pressed = (status && BUTTON_PRESSED_STATUS) === BUTTON_PRESSED_STATUS
-                    this.emit('button', pressed)
+            if (midiData.message === MidiMessage.NoteOff) {
+                const key = midiData.data[0] & 0x7F
+                if (key === BUTTON_KEY) {
+                    this.emit('button', false)
                 }
-            } else if (note === ROTATE_NOTE) {
-                if (status === ROTATE_STATUS) {
-                    this.emit('rotate', velocity, OrthoRemotePeripheral.rotationPoints)
+            }
+            if (midiData.message === MidiMessage.NoteOn) {
+                const key = midiData.data[0] & 0x7F
+                if (key === BUTTON_KEY) {
+                    this.emit('button', true)
+                }
+            }
+            if (midiData.message === MidiMessage.ControllerChange) {
+                const controller = midiData.data[0] & 0x7F
+                if (controller === VOLUME_CONTROLLER) {
+                    const value = midiData.data[1] & 0x7F
+                    this.emit('rotate', value, OrthoRemotePeripheral.rotationPoints)
                 }
             }
 
-            debug(`Status: ${midiData[0].status.toString(2).padStart(8, '0')}`)
-            debug(`Data 1: ${midiData[0].data[0].toString(2).padStart(8, '0')}`)
-            debug(`Data 2: ${midiData[0].data[1].toString(2).padStart(8, '0')}`)
+            debug(`Message: ${midiData.message.toString(2).padStart(8, '0')}`)
+            debug(`Channel: ${midiData.channel.toString(2).padStart(8, '0')}`)
+            debug(`Data 1: ${midiData.data[0].toString(2).padStart(8, '0')}`)
+            debug(`Data 2: ${midiData.data[1].toString(2).padStart(8, '0')}`)
         }
     }
 
@@ -557,52 +595,4 @@ export interface OrthoRemotePeripheral extends EventEmitter {
     once(eventName: 'error', listener: (error: Error) => void): this
     once(eventName: 'midi', listener: (data: MidiData, rawData: Buffer) => void): this
     once(eventName: 'rotate' , listener: (value: number, rawPoints: number) => void): this
-}
-
-//
-// Private functions
-//
-
-/**
- * Parses BLE-MIDI a data packet and returns one or more piece of MidiData
- * @internal
- *
- * @param packetData - BLE-MIDI packet to parese
- *
- * @return parsed data
- */
-export function parseBleMidiIOData(packetData: Buffer): MidiData[] {
-    const midiData: MidiData[] = []
-
-    if (!packetData || packetData.length < 5) {
-        return midiData
-    }
-
-    // First byte is the timestampHigh
-    const timestampHigh = packetData[0]
-    if (!(timestampHigh && 0x80)) {
-        return midiData
-    }
-
-    // Second byte is the timestampLow
-    const timestampLow = packetData[1]
-    if (!(timestampLow && 0x80)) {
-        return midiData
-    }
-
-    const timestamp = (timestampLow & 0x7F) | ((timestampHigh & 0x3F) << 7)
-
-    // Third is status
-    const status = packetData[2]
-    if (!(status && 0x80)) {
-        return midiData
-    }
-
-    const data = packetData.slice(3, 5)
-
-    return [{
-        timestamp,
-        status,
-        data,
-    }]
 }
