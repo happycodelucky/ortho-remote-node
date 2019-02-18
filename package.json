@@ -1,6 +1,6 @@
 {
   "name": "ortho-remote",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Client package for connecting to Ortho Remote Control by Teenage Engineering",
   "license": "MIT",
   "private": true,
