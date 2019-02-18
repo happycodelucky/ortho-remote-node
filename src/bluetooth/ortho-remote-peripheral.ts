@@ -21,7 +21,7 @@ const ROTATION_POINTS = 0x7F
 
 // MIDI Values
 const BUTTON_KEY = 0b00111100
-const VOLUME_CONTROLLER = 0b00000001
+const MODULATION_WHEEL_CONTROLLER = 0b00000001
 
 /**
  * Handler function for characteristic notify BLE subscriptions
@@ -251,7 +251,7 @@ export class OrthoRemotePeripheral extends EventEmitter {
             timestamp: Date.now(),
             message: MidiMessage.ControllerChange,
             channel: 0,
-            data: new Uint8Array([ VOLUME_CONTROLLER, value ]),
+            data: new Uint8Array([ MODULATION_WHEEL_CONTROLLER, value ]),
         })
     }
 
@@ -565,7 +565,7 @@ export class OrthoRemotePeripheral extends EventEmitter {
             }
             if (midiData.message === MidiMessage.ControllerChange) {
                 const controller = midiData.data[0] & 0x7F
-                if (controller === VOLUME_CONTROLLER) {
+                if (controller === MODULATION_WHEEL_CONTROLLER) {
                     const value = midiData.data[1] & 0x7F
                     this.emit('rotate', value, OrthoRemotePeripheral.rotationPoints)
                 }
