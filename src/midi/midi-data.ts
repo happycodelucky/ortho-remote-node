@@ -94,7 +94,7 @@ export function toMidiDataPacket(midiData: MidiData): Buffer {
     buffer[1] = tsLow | 0x80
 
     // Status
-    buffer[2] = midiData.message | midiData.channel
+    buffer[2] = midiData.message | (midiData.channel & 0xF)
 
     // Data
     buffer[3] = midiData.data[0] & 0x7F
