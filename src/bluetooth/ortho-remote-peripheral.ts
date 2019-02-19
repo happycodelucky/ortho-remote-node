@@ -18,14 +18,14 @@ const debug = createDebugLogger('orthoRemote/bluetooth')
 
 // MIDI Values
 const BUTTON_KEY = 0b00111100
-const MODULATION_WHEEL_CONTROLLER = 0b00000001
+const MODULATION_WHEEL_CONTROL = 0x1
 
 // Number of steps in modulation control
 const MODULATION_WHEEL_STEPS = 0x7F
 
 // Teenage Engineering Manufacturer ID
 // See https://www.midi.org/specifications-old/item/manufacturer-id-numbers
-const TEENAGE_ENGINEER_MID = [0x00, 0x20, 0x76]
+// const TEENAGE_ENGINEER_MID = [0x00, 0x20, 0x76]
 
 /**
  * Handler function for characteristic notify BLE subscriptions
@@ -227,15 +227,12 @@ export class OrthoRemotePeripheral extends EventEmitter {
                 .find(characteristic => characteristic.uuid === BleMidiServiceCharacteristic.MidiDataIO)
             if (midiCharacteristic) {
                 return new Promise<boolean>((resolve, reject) => {
-                    const sysExData = Buffer.from([
-                        0xF0, // SysEx
-                        ...TEENAGE_ENGINEER_MID,
-                        MODULATION_WHEEL_CONTROLLER,
-                        modulation,
-                        0xF7, // EOM
-                    ])
-
-                    midiCharacteristic.write(sysExData, true, (err) => {
+                    midiCharacteristic.write(toMidiDataPacket({
+                        timestamp: Date.now(),
+                        channel: 0,
+                        message: MidiMessage.ControlChange,
+                        data: new Uint8Array([ MODULATION_WHEEL_CONTROL, modulation ]),
+                    }), true, (err) => {
                         if (!err) {
                             resolve(true)
                         } else {
@@ -559,9 +556,9 @@ export class OrthoRemotePeripheral extends EventEmitter {
                     this.emit('note', key, true)
                 }
             }
-            if (midiData.message === MidiMessage.ControllerChange) {
+            if (midiData.message === MidiMessage.ControlChange) {
                 const controller = midiData.data[0] & 0x7F
-                if (controller === MODULATION_WHEEL_CONTROLLER) {
+                if (controller === MODULATION_WHEEL_CONTROL) {
                     const value = midiData.data[1] & 0x7F
                     this.emit('modulation', value, OrthoRemotePeripheral.modulationSteps)
                 }
