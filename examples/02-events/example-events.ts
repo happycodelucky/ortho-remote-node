@@ -10,9 +10,11 @@ const DEVICE_ID: string | undefined = undefined
 async function main() {
     const device = await connectToDevice(DEVICE_ID)
 
+
     // When button is pressed & released
     device.on('click', () => {
         logEvent('click')
+        device.orthoRemotePeripheral.setModulation(0.9)
     })
 
     // When button is pressed & released after a duration
@@ -34,14 +36,6 @@ async function main() {
     device.on('rotate', (rotation, buttonPressed) => {
         logEvent('rotate', {
             rotation: rotation.toFixed(3),
-            buttonPressed,
-        })
-    })
-
-    // Rotation in any direction
-    device.on('velocity', (velocity, buttonPressed) => {
-        logEvent('velocity', {
-            velocity: velocity.toFixed(3),
             buttonPressed,
         })
     })

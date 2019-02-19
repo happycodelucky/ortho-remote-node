@@ -8,7 +8,6 @@ import {
     OnMidiCallback,
     OnRotateCallback,
     OnRssiCallback,
-    OnVelocityCallback,
 } from './callbacks/callbacks'
 import { OrthoRemoteError } from './errors'
 import { OrthoRemotePeripheral } from './bluetooth/ortho-remote-peripheral'
@@ -16,7 +15,7 @@ import { OrthoRemotePeripheral } from './bluetooth/ortho-remote-peripheral'
 // Interval to be classified as long-click
 const LONG_CLICK_INTERVAL_MS = 400
 // Default rotation on connect (always center)
-const DEFAULT_ROTATION = Math.floor(OrthoRemotePeripheral.rotationPoints / 2)
+const DEFAULT_ROTATION = Math.floor(OrthoRemotePeripheral.modulationSteps / 2)
 
 /**
  * Configuration and behavior options for `OrthoRemote`
@@ -122,26 +121,10 @@ export class OrthoRemote extends EventEmitter {
     get rotation(): number {
         const normalize = this.configuration.normalizeData
         if (normalize !== false) {
-            return (this.internalRotation / OrthoRemotePeripheral.rotationPoints)
+            return (this.internalRotation / OrthoRemotePeripheral.modulationSteps)
         }
 
         return this.internalRotation
-    }
-
-    /**
-     * Ortho Remote rotation value, can be between -1.0 - 1.0 (normalized) -64 - 64 (raw)
-     * @event velocity
-     */
-    get velocity(): number {
-        const center = OrthoRemotePeripheral.rotationPoints / 2
-        const velocity = this.internalRotation - center
-
-        const normalize = this.configuration.normalizeData
-        if (normalize !== false) {
-            return velocity / center
-        }
-
-        return velocity < 0 ? Math.floor(velocity) : Math.round(velocity)
     }
 
     //
@@ -196,15 +179,15 @@ export class OrthoRemote extends EventEmitter {
         peripheral.on('rssi', () => this.emit('rssi', this.rssi!))
 
         // Interactions
-        peripheral.on('button', (pressed: boolean) => {
-            if (pressed) {
+        peripheral.on('note', (key: number, on: boolean) => {
+            if (on) {
                 this.onButtonPressed()
             } else {
                 this.onButtonReleased()
             }
         })
         peripheral.on('midi', (data, rawData) => this.emit('midi', data, rawData))
-        peripheral.on('rotate', this.onRotate.bind(this))
+        peripheral.on('modulation', this.onRotate.bind(this))
 
         // Errors
         peripheral.on('error', this.onError.bind(this))
@@ -251,7 +234,6 @@ export class OrthoRemote extends EventEmitter {
 
         const buttonPressed = !!this.buttonPressedTimestamp
 
-        this.emit('velocity', this.velocity, buttonPressed)
         this.emit('rotate', this.rotation, buttonPressed)
     }
 }
@@ -268,7 +250,6 @@ export declare interface OrthoRemote {
     addListener(eventName: 'midi', listener: OnMidiCallback): this
     addListener(eventName: 'rotate', listener: OnRotateCallback): this
     addListener(eventName: 'rssi', listener: OnRssiCallback): this
-    addListener(eventName: 'velocity', listener: OnVelocityCallback): this
 
     /** @internal */
     emit(eventName: 'batteryLevel' | 'rssi', value: number): boolean
@@ -278,8 +259,7 @@ export declare interface OrthoRemote {
     emit(eventName: 'error', error: OrthoRemoteError): boolean
     /** @internal */
     emit(eventName: 'midi', data: MidiData, rawData: Buffer): boolean
-    /** @internal */
-    emit(eventName: 'rotate' | 'velocity', value: number, buttonPressed: boolean): boolean
+    emit(eventName: 'rotate', value: number, buttonPressed: boolean): boolean
 
     listeners(eventName: 'batteryLevel'): OnBatteryLeveCallback[]
     listeners(eventName: 'buttonPressed' | 'buttonReleased' | 'click' | 'connect' | 'disconnect' | 'longClick'): OnEventCallback[]
@@ -287,7 +267,6 @@ export declare interface OrthoRemote {
     listeners(eventName: 'midi'): OnMidiCallback[]
     listeners(eventName: 'rotate'): OnRotateCallback[]
     listeners(eventName: 'rssi'): OnRssiCallback[]
-    listeners(eventName: 'velocity'): OnVelocityCallback[]
 
     off(eventName: 'batteryLevel', listener: OnBatteryLeveCallback): this
     off(eventName: 'buttonPressed' | 'buttonReleased' | 'click' | 'connect' | 'disconnect' | 'longClick',
@@ -296,7 +275,6 @@ export declare interface OrthoRemote {
     off(eventName: 'midi', listener: OnMidiCallback): this
     off(eventName: 'rotate', listener: OnRotateCallback): this
     off(eventName: 'rssi', listener: OnRssiCallback): this
-    off(eventName: 'velocity', listener: OnVelocityCallback): this
 
     on(eventName: 'batteryLevel', listener: OnBatteryLeveCallback): this
     on(eventName: 'buttonPressed' | 'buttonReleased' | 'click' | 'connect' | 'disconnect' | 'longClick',
@@ -305,7 +283,6 @@ export declare interface OrthoRemote {
     on(eventName: 'midi', listener: OnMidiCallback): this
     on(eventName: 'rotate', listener: OnRotateCallback): this
     on(eventName: 'rssi', listener: OnRssiCallback): this
-    on(eventName: 'velocity', listener: OnVelocityCallback): this
 
     once(eventName: 'batteryLevel', listener: OnBatteryLeveCallback): this
     once(eventName: 'buttonPressed' | 'buttonReleased' | 'click' | 'connect' | 'disconnect' | 'longClick',
@@ -314,7 +291,6 @@ export declare interface OrthoRemote {
     once(eventName: 'midi', listener: OnMidiCallback): this
     once(eventName: 'rotate', listener: OnRotateCallback): this
     once(eventName: 'rssi', listener: OnRssiCallback): this
-    once(eventName: 'velocity', listener: OnVelocityCallback): this
 
     prependListener(eventName: 'batteryLevel', listener: OnBatteryLeveCallback): this
     prependListener(eventName: 'buttonPressed' | 'buttonReleased' | 'click' | 'connect' | 'disconnect' | 'longClick',
@@ -323,7 +299,6 @@ export declare interface OrthoRemote {
     prependListener(eventName: 'midi', listener: OnMidiCallback): this
     prependListener(eventName: 'rotate', listener: OnRotateCallback): this
     prependListener(eventName: 'rssi', listener: OnRssiCallback): this
-    prependListener(eventName: 'velocity', listener: OnVelocityCallback): this
 
     prependOnceListener(eventName: 'batteryLevel', listener: OnBatteryLeveCallback): this
     prependOnceListener(eventName: 'buttonPressed' | 'buttonReleased' | 'click' | 'connect' | 'disconnect' | 'longClick',
@@ -332,7 +307,6 @@ export declare interface OrthoRemote {
     prependOnceListener(eventName: 'midi', listener: OnMidiCallback): this
     prependOnceListener(eventName: 'rotate', listener: OnRotateCallback): this
     prependOnceListener(eventName: 'rssi', listener: OnRssiCallback): this
-    prependOnceListener(eventName: 'velocity', listener: OnVelocityCallback): this
 
     removeListener(eventName: 'batteryLevel', listener: OnBatteryLeveCallback): this
     removeListener(eventName: 'buttonPressed' | 'buttonReleased' | 'click' | 'connect' | 'disconnect' | 'longClick',
@@ -341,8 +315,7 @@ export declare interface OrthoRemote {
     removeListener(eventName: 'midi', listener: OnMidiCallback): this
     removeListener(eventName: 'rotate', listener: OnRotateCallback): this
     removeListener(eventName: 'rssi', listener: OnRssiCallback): this
-    removeListener(eventName: 'velocity', listener: OnVelocityCallback): this
 
     listenerCount(type: 'batteryLevel' | 'buttonPressed' | 'buttonReleased' | 'click' | 'connect' | 'disconnect' | 'error' |
-        'longClick' | 'midi' | 'rotate' | 'rssi' | 'velocity'): number
+        'longClick' | 'midi' | 'rotate' | 'rssi'): number
 }
