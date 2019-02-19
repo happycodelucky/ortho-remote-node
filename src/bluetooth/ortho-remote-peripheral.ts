@@ -16,12 +16,16 @@ import { MidiMessage } from '../midi/midi-message';
 // Create debug logger
 const debug = createDebugLogger('orthoRemote/bluetooth')
 
-// Number of points to accumulate one
-const ROTATION_POINTS = 0x7F
-
 // MIDI Values
 const BUTTON_KEY = 0b00111100
 const MODULATION_WHEEL_CONTROLLER = 0b00000001
+
+// Number of steps in modulation control
+const MODULATION_WHEEL_STEPS = 0x7F
+
+// Teenage Engineering Manufacturer ID
+// See https://www.midi.org/specifications-old/item/manufacturer-id-numbers
+const TEENAGE_ENGINEER_MID = [0x00, 0x20, 0x76]
 
 /**
  * Handler function for characteristic notify BLE subscriptions
@@ -46,9 +50,9 @@ export class OrthoRemotePeripheral extends EventEmitter {
     static advertisementName = OrthoRemotePeripheralName
 
     /**
-     * Number of points supported by rotation events
+     * Number of steps supported by the modulation wheel
      */
-    static rotationPoints = ROTATION_POINTS
+    static modulationSteps = MODULATION_WHEEL_STEPS
 
     /**
      * Associated bluetooth peripheral
@@ -204,13 +208,17 @@ export class OrthoRemotePeripheral extends EventEmitter {
     }
 
     /**
-     * Writes MIDI data to the peripheral
+     * Sets the Ortho Remote modulation wheel value
      *
-     * @param data - data to write
+     * @param value - modulation value
      *
-     * @return `true` if the data was written successfully
+     * @return `true` if the value was written successfully
      */
-    async write(data: MidiData): Promise<boolean> {
+    async setModulation(value: number): Promise<boolean> {
+        if (!check.inRange(value, 0, MODULATION_WHEEL_STEPS)) {
+            throw new TypeError(`setModulation(value) should be between 0-${MODULATION_WHEEL_STEPS}`)
+        }
+
         this.connectionRequiredToProceed()
 
         const midiService = this.internalPeripheral.services.find(service => service.uuid === PeripheralService.BleMidi)
@@ -219,7 +227,15 @@ export class OrthoRemotePeripheral extends EventEmitter {
                 .find(characteristic => characteristic.uuid === BleMidiServiceCharacteristic.MidiDataIO)
             if (midiCharacteristic) {
                 return new Promise<boolean>((resolve, reject) => {
-                    midiCharacteristic.write(toMidiDataPacket(data), true, (err) => {
+                    const sysExData = Buffer.from([
+                        0xF0, // SysEx
+                        ...TEENAGE_ENGINEER_MID,
+                        MODULATION_WHEEL_CONTROLLER,
+                        Math.round(value * MODULATION_WHEEL_STEPS),
+                        0xF7, // EOM
+                    ])
+
+                    midiCharacteristic.write(sysExData, true, (err) => {
                         if (!err) {
                             resolve(true)
                         } else {
@@ -233,26 +249,6 @@ export class OrthoRemotePeripheral extends EventEmitter {
         }
 
         return false
-    }
-
-    /**
-     * Sets the Ortho Remote rotation value
-     *
-     * @param value - rotation value
-     *
-     * @return `true` if the value was written successfully
-     */
-    async setRotation(value: number): Promise<boolean> {
-        if (!check.inRange(value, 0, ROTATION_POINTS)) {
-            throw new TypeError(`setRotation(value) should be between 0-${ROTATION_POINTS}`)
-        }
-
-        return this.write({
-            timestamp: Date.now(),
-            message: MidiMessage.ControllerChange,
-            channel: 0,
-            data: new Uint8Array([ MODULATION_WHEEL_CONTROLLER, value ]),
-        })
     }
 
     //
@@ -554,20 +550,20 @@ export class OrthoRemotePeripheral extends EventEmitter {
             if (midiData.message === MidiMessage.NoteOff) {
                 const key = midiData.data[0] & 0x7F
                 if (key === BUTTON_KEY) {
-                    this.emit('button', false)
+                    this.emit('note', key, false)
                 }
             }
             if (midiData.message === MidiMessage.NoteOn) {
                 const key = midiData.data[0] & 0x7F
                 if (key === BUTTON_KEY) {
-                    this.emit('button', true)
+                    this.emit('note', key, true)
                 }
             }
             if (midiData.message === MidiMessage.ControllerChange) {
                 const controller = midiData.data[0] & 0x7F
                 if (controller === MODULATION_WHEEL_CONTROLLER) {
                     const value = midiData.data[1] & 0x7F
-                    this.emit('rotate', value, OrthoRemotePeripheral.rotationPoints)
+                    this.emit('modulation', value, OrthoRemotePeripheral.modulationSteps)
                 }
             }
 
@@ -597,23 +593,23 @@ export class OrthoRemotePeripheral extends EventEmitter {
 /** @internal */
 export interface OrthoRemotePeripheral extends EventEmitter {
     emit(eventName: 'batteryLevel' | 'rssi', data: number): boolean
-    emit(eventName: 'button', pressed: boolean): boolean
+    emit(eventName: 'note', key: number, on: boolean): boolean
     emit(eventName: 'connect' | 'disconnect'): boolean
     emit(eventName: 'error', error: Error): boolean
     emit(eventName: 'midi', data: MidiData, rawData: Buffer): boolean
-    emit(eventName: 'rotate', value: number, rawPoints: number): boolean
+    emit(eventName: 'modulation', value: number, rawPoints: number): boolean
 
     on(eventName: 'batteryLevel' | 'rssi', listener: (data: number) => void): this
-    on(eventName: 'button', listener: (pressed: boolean) => void): this
+    on(eventName: 'note', listener: (key: number, on: boolean) => void): this
     on(eventName: 'connect' | 'disconnect', listener: () => void): this
     on(eventName: 'error', listener: (error: Error) => void): this
     on(eventName: 'midi', listener: (data: MidiData, rawData: Buffer) => void): this
-    on(eventName: 'rotate' , listener: (value: number, rawPoints: number) => void): this
+    on(eventName: 'modulation' , listener: (value: number, rawPoints: number) => void): this
 
     once(eventName: 'batteryLevel' | 'rssi', listener: (data: number) => void): this
-    once(eventName: 'button', listener: (pressed: boolean) => void): this
+    once(eventName: 'note', listener: (key: number, on: boolean) => void): this
     once(eventName: 'connect' | 'disconnect', listener: () => void): this
     once(eventName: 'error', listener: (error: Error) => void): this
     once(eventName: 'midi', listener: (data: MidiData, rawData: Buffer) => void): this
-    once(eventName: 'rotate' , listener: (value: number, rawPoints: number) => void): this
+    once(eventName: 'modulation' , listener: (value: number, rawPoints: number) => void): this
 }
