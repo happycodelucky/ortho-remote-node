@@ -62,17 +62,6 @@ export interface OnRotateCallback {
 }
 
 /**
- * Callback for velocity` events
- */
-export interface OnVelocityCallback {
-    /**
-     * @param value - velocity based event value between -1.0 - 1.0
-     * @param buttonPressed - indicates if the button is pressed whilst rotating dial
-     */
-    (value: number, buttonPressed: boolean): void
-}
-
-/**
  * Callback for device `discover` events
  */
 export interface OnDeviceDiscoveredCallback {
