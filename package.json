@@ -1,6 +1,6 @@
 {
   "name": "ortho-remote",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Client package for connecting to Ortho Remote Control by Teenage Engineering",
   "license": "MIT",
   "private": true,
@@ -10,15 +10,15 @@
     "email": "paul.a.bates@gmail.com"
   },
   "keywords": [
-    "senic",
+    "teenage engineering",
     "ortho",
     "ortho remote",
-    "rocket ortho remote",
     "ble",
     "iot",
     "dial",
     "knob",
-    "volume"
+    "volume",
+    "midi"
   ],
   "main": "lib/index.js",
   "types": "dts/index.d.ts",

@@ -2,7 +2,7 @@
 ![Node](https://img.shields.io/npm/v/ortho-remote.svg?style=for-the-badge&label=version)
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/pryomoax/ortho-remote-node/graphs/commit-activity)
 
-Node.js package for interfacing with [Teenage Engineering](https://www.teenageengineering.com)'s [Ortho Remote](https://www.teenageengineering.com/products/orthoremote)
+Ortho Remote client package for Node.js for interacting with [Teenage Engineering](https://www.teenageengineering.com)'s BLE-MIDI [Ortho Remote](https://www.teenageengineering.com/products/orthoremote)
 
 The `ortho-remote` package is designed to support multiple devices simultaneously, provide a high-level abstraction for interaction events, as well as provide access to the raw [BLE-MIDI](https://github.com/skratchdot/ble-midi/blob/master/pdf/Apple-Bluetooth-Low-Energy-MIDI-Specification.pdf) data.
 
@@ -177,18 +177,13 @@ if (await device.connect()) {
     // Rotation
     device.on('rotate', (rotation: number, buttonPressed: boolean) => {
         console.log(`Rotated: ${rotation}`)
-    })
-    
-    // Velocity, negative/positive based on connected origin
-    device.on('velocity', (velocity: number, buttonPressed: boolean) => {
-        console.log(`Velocity: ${velocity}`)
-    })    
+    })   
 }
 ```
 
 ## Accessing Raw Data
 
-The abstractions in eventing may not work for everyone so `ortho-remote` emits BLE-MIDI events, or can be configured to emit raw data in other events like `rotate` or `velocity` instead of them being normalized.
+The abstractions in eventing may not work for everyone so `ortho-remote` emits BLE-MIDI events, or can be configured to emit raw data in other events like `rotate` ` instead of them being normalized.
 
 ```typescript
 import { OrthoRemoteConfig } from 'ortho-remote'
@@ -201,9 +196,6 @@ const orthoConfig: OrthoRemoteConfig = {
 if (await device.connect(orthoConfig)) {
     device.on('rotate', (rotation: number, buttonPressed: boolean) => {
         console.log(`Rotated: ${rotation}`)
-    })
-    device.on('velocity', (velocity: number, buttonPressed: boolean) => {
-        console.log(`Velocity: ${velocity}`)
     })
 }
 ```
