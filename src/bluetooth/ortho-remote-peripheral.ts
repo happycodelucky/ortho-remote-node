@@ -210,13 +210,13 @@ export class OrthoRemotePeripheral extends EventEmitter {
     /**
      * Sets the Ortho Remote modulation wheel value
      *
-     * @param value - modulation value
+     * @param modulation - modulation value
      *
      * @return `true` if the value was written successfully
      */
-    async setModulation(value: number): Promise<boolean> {
-        if (!check.inRange(value, 0, MODULATION_WHEEL_STEPS)) {
-            throw new TypeError(`setModulation(value) should be between 0-${MODULATION_WHEEL_STEPS}`)
+    async setModulation(modulation: number): Promise<boolean> {
+        if (!check.inRange(modulation, 0, MODULATION_WHEEL_STEPS)) {
+            throw new TypeError(`setModulation(modulation) should be between 0-${MODULATION_WHEEL_STEPS}`)
         }
 
         this.connectionRequiredToProceed()
@@ -231,7 +231,7 @@ export class OrthoRemotePeripheral extends EventEmitter {
                         0xF0, // SysEx
                         ...TEENAGE_ENGINEER_MID,
                         MODULATION_WHEEL_CONTROLLER,
-                        Math.round(value * MODULATION_WHEEL_STEPS),
+                        modulation,
                         0xF7, // EOM
                     ])
 
