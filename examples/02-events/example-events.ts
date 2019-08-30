@@ -10,7 +10,6 @@ const DEVICE_ID: string | undefined = undefined
 async function main() {
     const device = await connectToDevice(DEVICE_ID)
 
-
     // When button is pressed & released
     device.on('click', () => {
         logEvent('click')
