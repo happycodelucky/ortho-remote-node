@@ -226,12 +226,27 @@ export class OrthoRemotePeripheral extends EventEmitter {
             const midiCharacteristic = midiService.characteristics
                 .find(characteristic => characteristic.uuid === BleMidiServiceCharacteristic.MidiDataIO)
             if (midiCharacteristic) {
-                return new Promise<boolean>((resolve, reject) => {
+                const midiData = parseMidiDataPacket(await new Promise<Buffer>((resolve, reject) => {
+                    midiCharacteristic.read((err, data) => {
+                        if (err) {
+                            reject(new OrthoRemoteCommunicationError(
+                                OrthoRemoteCommunicationErrorCode.Bluetooth, this.id, err))
+                        }
+
+                        resolve(data)
+
+                        return
+                    })
+                }))[0]
+
+                // tslint:disable
+                const time = Date.now()
+                await new Promise<boolean>((resolve, reject) => {
                     midiCharacteristic.write(toMidiDataPacket({
-                        timestamp: Date.now(),
+                        timestamp: midiData.timestamp + 1 + (Date.now() - time),
                         channel: 0,
                         message: MidiMessage.ControlChange,
-                        data: new Uint8Array([ MODULATION_WHEEL_CONTROL, modulation ]),
+                        data: new Uint8Array([ MODULATION_WHEEL_CONTROL, Math.floor(modulation * MODULATION_WHEEL_STEPS) ]),
                     }), true, (err) => {
                         if (!err) {
                             resolve(true)
@@ -241,7 +256,6 @@ export class OrthoRemotePeripheral extends EventEmitter {
                         }
                     })
                 })
-
             }
         }
 

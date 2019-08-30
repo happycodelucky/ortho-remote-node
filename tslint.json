@@ -156,6 +156,7 @@
         "space-before-function-paren": [true, {"anonymous": "always", "named": "never", "asyncArrow": "always"}],
         "space-within-parens": [true, "never"],
         "strict-boolean-expressions": false,
+        "strict-comparisons": false,
         "strict-type-predicates": true,
         "switch-default": false,
         "switch-final-break": false,
