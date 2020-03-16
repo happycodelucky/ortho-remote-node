@@ -51,7 +51,7 @@
     "gulp-tslint": "^8.1",
     "gulp-typescript": "^5.0",
     "merge2": "^1.2.3",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.2",
     "mocha": "^6.2",
     "mocha-typescript": "^1.1",
     "nyc": "^14.1",
