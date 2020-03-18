@@ -45,7 +45,6 @@ export interface OrthoRemoteConfig {
 export class OrthoRemote extends EventEmitter {
     /**
      * Associated peripheral
-     * @internal
      */
     orthoRemotePeripheral: OrthoRemotePeripheral
 
@@ -241,7 +240,7 @@ export class OrthoRemote extends EventEmitter {
 //
 // Event declarations
 //
-
+// tslint:disable-next-line:completed-docs
 export declare interface OrthoRemote {
     addListener(eventName: 'batteryLevel', listener: OnBatteryLeveCallback): this
     addListener(eventName: 'buttonPressed' | 'buttonReleased' | 'click' | 'connect' | 'disconnect' | 'longClick',

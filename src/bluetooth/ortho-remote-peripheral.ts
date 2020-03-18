@@ -1,7 +1,7 @@
 import * as check from 'check-types'
 import * as createDebugLogger from 'debug'
 
-import { Characteristic, Peripheral, Service } from 'noble'
+import { Characteristic, Peripheral, Service } from '@abandonware/noble'
 import { EventEmitter } from 'events'
 
 import { DEVICE_CONNECT_TIMEOUT_MS } from '../defaults'
@@ -139,22 +139,6 @@ export class OrthoRemotePeripheral extends EventEmitter {
         return undefined
     }
 
-    //
-    // Public functions
-    //
-
-    /**
-     * Disconnects cleanly from the device
-     * @emit 'disconnect'
-     */
-    disconnect() {
-        this.internalPeripheral.removeAllListeners()
-        this.internalPeripheral.disconnect()
-
-        this.internalConnectedState = OrthoRemotePeriperalConnectedStatus.Disconnected
-        this.emit('disconnect')
-    }
-
     /**
      * Underlying bluetooth peripheral
      */
@@ -190,6 +174,22 @@ export class OrthoRemotePeripheral extends EventEmitter {
                 this.emit('disconnect')
             }
         }
+    }
+
+    //
+    // Public functions
+    //
+
+    /**
+     * Disconnects cleanly from the device
+     * @emit 'disconnect'
+     */
+    disconnect() {
+        this.internalPeripheral.removeAllListeners()
+        this.internalPeripheral.disconnect()
+
+        this.internalConnectedState = OrthoRemotePeriperalConnectedStatus.Disconnected
+        this.emit('disconnect')
     }
 
     /**
@@ -358,7 +358,7 @@ export class OrthoRemotePeripheral extends EventEmitter {
                     return
                 }
 
-                // Characterisitic discovery...
+                // Characteristic discovery...
                 await Promise.all(services.map(async (service) => {
                     return new Promise<Characteristic[]>((resolveCharacteristic, rejectCharacteristic) => {
                         service.discoverCharacteristics([], (err, characteristics) => {
