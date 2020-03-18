@@ -11,8 +11,6 @@ For more information on BLE-MIDI see [midi.org](https://www.midi.org/midi/specif
 ![Ortho Remote](https://github.com/pryomoax/ortho-remote-node/raw/master/assets/ortho.png)
 
 - [Installation](#installation)
-  * [Node.js 10.x](#nodejs-10x)
-    + [Overriding Dependencies](#overriding-dependencies)
 - [Troubleshooting](#troubleshooting)
   * [Linux Permissions](#linux-permissions)
   * [Low Power States](#low-power-states)

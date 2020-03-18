@@ -31,7 +31,7 @@ const DIST_DEST = 'dist'            // Javascript sources
 const TYPEDEF_DEST = 'dts'          // Defintion files
 
 // Package projects
-const PROJECT_TSCONFIG = './src/tsconfig.json'
+const PROJECT_TSCONFIG = './tsconfig.json'
 const EXAMPLES_TSCONFIG = './examples/tsconfig.json'
 
 // Package files
