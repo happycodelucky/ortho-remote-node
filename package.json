@@ -25,7 +25,7 @@
   "dependencies": {
     "check-types": "^10.0",
     "debug": "^3.2",
-    "noble": "https://github.com/Timeular/noble-mac#^0.0.4",
+    "noble": "https://github.com/Timeular/noble-mac",
     "tslib": "^1.10",
     "weak": "^1.0"
   },
