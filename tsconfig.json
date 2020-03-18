@@ -1,11 +1,19 @@
 {
-    "extends": "./tsconfig.common.json",
+    "extends": "./tsconfig-common.json",
     "compilerOptions": {
         "inlineSourceMap": true,
-        "outDir": "lib",
-        "noEmitOnError": true
+        "preserveConstEnums": true,
+        "outDir": "dist",
+        "noEmitOnError": false,
+        "resolveJsonModule": true
+    },
+    "typeAcquisition": {
+        "enable": true
     },
     "include": [
         "src/**/*.ts"
     ],
+    "exclude": [
+
+    ]
 }

@@ -36,30 +36,6 @@ $ yarn add ortho-remote
 
 `ortho-remote` is writing in TypeScript and contains the necessary type definitions, so no need to acquire `@type` definitions
 
-## Node.js 10.x
-`ortho-remote` uses [noble](https://github.com/noble/noble) under the hood for communicating with to BLE devices. `noble` running with Node.js 10.x or greater currently has issues related to `xpc-connection` (used for macOS).
-
-In your project you will need to use `yarn`'s **resolutions** addition to override to a fixed version of `xpc-connection`. Unfortunately, this is an open [pull request](https://github.com/sandeepmistry/node-xpc-connection/pull/26) so a git reference is required.
-
-### Overriding Dependencies
-
-In *your* project's `package.json` insert the following:
-
-```json
-  "depedendencies": {
-   "ortho-remote": "^0.1"
-  },
-  "resolutions": {
-    "xpc-connection": "sandeepmistry/node-xpc-connection#pull/26/head"
-  }
-```
-
-Then run from the terminal
-
-```bash
-$ yarn install
-```
-
 # Troubleshooting
 It's worth adding help on troubleshooting before you get started. There may be times your Ortho Remote cannot be discovered for various reasons.
 
@@ -75,7 +51,7 @@ A Ortho Remote may have entered a **low-power state**. Simply interact with the 
 
 BLE-MIDI devices on some OSes can retain paired connections. This can be problematic because once paired Ortho Remote will not be discoverable, leading to timed out connections.
 
-**Ensure you have disconnected** from an Ortho Remote before running any example or writing code. 
+**Ensure you have disconnected** from an Ortho Remote before running any example or writing code.
 
 You may addtionally have to **manually disconnect** after each run-debug cycle during development, as has been my experience on macOS as it automatically pairs on connection...
 
@@ -84,7 +60,7 @@ You may addtionally have to **manually disconnect** after each run-debug cycle d
 
 # Getting Started
 
-Check out [examples](./examples) for now for more usage. 
+Check out [examples](./examples) for now for more usage.
 
 ## Examples
 
@@ -168,16 +144,16 @@ if (await device.connect()) {
     device.on('click', () => {
         console.log('Clicked!')
     })
-    
+
     // Button click, longer than 400ms
     device.on('longClick', () => {
         console.log('Clicked!')
     })
-    
+
     // Rotation
     device.on('rotate', (rotation: number, buttonPressed: boolean) => {
         console.log(`Rotated: ${rotation}`)
-    })   
+    })
 }
 ```
 
@@ -214,7 +190,7 @@ if (await device.connect()) {
 
 # API
 
-Coming Soon
+The API documention for the package can be found under [docs](docs/api/README.md)
 
 # Known Issues
 

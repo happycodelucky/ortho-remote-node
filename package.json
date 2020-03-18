@@ -1,6 +1,6 @@
 {
   "name": "ortho-remote",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Client package for connecting to Ortho Remote Control by Teenage Engineering",
   "license": "MIT",
   "private": true,
@@ -20,51 +20,57 @@
     "volume",
     "midi"
   ],
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "types": "dts/index.d.ts",
   "dependencies": {
-    "check-types": "^10.0",
-    "debug": "^3.2",
-    "noble": "https://github.com/Timeular/noble-mac#^0.0.4",
-    "tslib": "^1.10",
-    "weak": "^1.0"
+    "@abandonware/noble": "^1.9.2-7",
+    "check-types": "^11.1",
+    "debug": "^4.1",
+    "tslib": "^1.11",
+    "weak-napi": "^1.0.3"
   },
   "devDependencies": {
+    "@types/chai-as-promised": "^7.1",
+    "@types/chalk": "^2.2.0",
     "@types/check-types": "^7.3",
     "@types/debug": "^4.1",
     "@types/del": "^3.0",
     "@types/gulp": "^4.0",
     "@types/gulp-bump": "^2.8",
     "@types/gulp-json-editor": "^2.2",
-    "@types/merge2": "^1.1",
-    "@types/minimist": "^1.2",
+    "@types/merge2": "^1.3",
+    "@types/mocha": "^7.0",
     "@types/noble": "^0.0.39",
-    "@types/node": "^12.7",
-    "@types/weak": "^1.0",
+    "@types/node": "^12.12",
+    "@types/weak-napi": "^1.0",
     "chai": "^4.2",
     "chai-as-promised": "^7.1",
-    "chalk": "^2.4",
+    "chalk": "^3.0.0",
     "del": "^3.0",
     "gulp": "^4.0",
     "gulp-bump": "^3.1",
     "gulp-json-editor": "^2.5",
     "gulp-tslint": "^8.1",
     "gulp-typescript": "^5.0",
-    "merge2": "^1.2.3",
-    "minimist": "^1.2.2",
-    "mocha": "^6.2",
+    "merge2": "^1.3",
+    "mocha": "^7.1",
     "mocha-typescript": "^1.1",
-    "nyc": "^14.1",
-    "ts-node": "^8.0",
-    "tslint": "^5.19",
-    "typescript": "^3.6"
-  },
-  "resolutions": {
-    "xpc-connection": "sandeepmistry/node-xpc-connection#pull/26/head"
+    "nyc": "^15.0",
+    "ts-node": "^8.6",
+    "tslint": "^6.0",
+    "typedoc": "^0.17",
+    "typedoc-plugin-markdown": "^2.2",
+    "typescript": "^3.8"
   },
   "scripts": {
+    "start": "ts-node --project ./examples/tsconfig.json ./examples/02-events/example-events.ts",
     "device-discovery": "ts-node --project ./examples/tsconfig.json ./examples/01-device-discovery/example-device-discovery.ts",
     "events": "ts-node --project ./examples/tsconfig.json ./examples/02-events/example-events.ts",
-    "test": "TS_NODE_PROJECT=./test/tsconfig.json nyc mocha -r ts-node/register -r test/prepare test/**/*.spec.ts test/*.spec.ts --exit"
+    "test": "TS_NODE_PROJECT=./test/tsconfig.json nyc mocha -r ts-node/register -r ./test/prepare.ts test/**/*.spec.ts test/*.spec.ts --exit",
+    "build": "npx tsc --project ./tsconfig.json -d --declarationDir dts; npx typedoc",
+    "build:src": "npx tsc -p ./tsconfig.json",
+    "build:dts": "npx tsc -p ./tsconfig.json -d --declarationDir dts",
+    "build:docs": "npx typedoc",
+    "lint": "npx tslint -p ./tsconfig.json; npx tslint --project ./examples/tsconfig.json"
   }
 }

@@ -1,5 +1,5 @@
 /**
- * ortho-remote gulp.js task configuration
+ * rocket-nuimo gulp.js task configuration
  *
  * Tasks:
  *  - clean
@@ -8,6 +8,8 @@
  *  - preparePublish
  *  - publish
  */
+
+// tslint:disable:completed-docs
 
 import * as del from 'del'
 import * as typescript from 'typescript'
@@ -18,19 +20,18 @@ import gulpTsLint from 'gulp-tslint'
 
 import { Linter } from 'tslint'
 import { Project } from 'gulp-typescript'
-import { TaskCallback } from 'gulp'
 
 import { createProject as createTsProject } from 'gulp-typescript'
 import { dest, parallel, series, src } from 'gulp'
 
 // Build destination paths
-const ARTIFACTS_DEST = 'publish'    // Build artifacts
+const ARTIFACTS_DEST = 'publish'    // Build artificats
 const COVERAGE_DEST = 'coverage'    // Coverage reports
-const LIB_DEST = 'lib'              // Javascript sources
-const TYPEDEF_DEST = 'dts'          // Definition files
+const DIST_DEST = 'dist'            // Javascript sources
+const TYPEDEF_DEST = 'dts'          // Defintion files
 
 // Package projects
-const PROJECT_TSCONFIG = './tsconfig.json'
+const PROJECT_TSCONFIG = './src/tsconfig.json'
 const EXAMPLES_TSCONFIG = './examples/tsconfig.json'
 
 // Package files
@@ -43,11 +44,11 @@ const PACKAGE_FILES_GLOB = [
 /**
  * Purges all generated sources and artifacts
  */
-export function clean() {
+export async function clean() {
     return del([
         ARTIFACTS_DEST,
         COVERAGE_DEST,
-        LIB_DEST,
+        DIST_DEST,
         TYPEDEF_DEST,
     ])
 }
@@ -55,7 +56,7 @@ export function clean() {
 /**
  * Performs a lint on package & example sources
  */
-export function lint(done: TaskCallback) {
+export async function lint(done: (error?: any) => void) {
     return parallel(
         lintSources.bind(undefined, tsProject()),
         lintSources.bind(undefined, tsExamplesProject()),
@@ -65,14 +66,14 @@ export function lint(done: TaskCallback) {
 /**
  * Transpiles package sources
  */
-export function build() {
+export async function build() {
     return transpileSources(tsProject(), './')
 }
 
 /**
  * Packages up the package and assembles an set of artifacts for publishing
  */
-export function preparePublish(done: TaskCallback) {
+export async function preparePublish(done: (error?: any) => void) {
     const project = tsProject()
     const artifactsPath = ARTIFACTS_DEST
 
@@ -93,7 +94,7 @@ export function preparePublish(done: TaskCallback) {
 /**
  *
  */
-export function publish(done: TaskCallback) {
+export function publish(done: (error?: any) => void) {
 }
 
 //
@@ -145,8 +146,8 @@ function transpileSources(project: Project, artifactsPath: string) {
     const compilationResult = project.src().pipe(project())
 
     return merge([
-        compilationResult.js.pipe(dest(`${artifactsPath}/lib`)),
-        compilationResult.dts.pipe(dest(`${artifactsPath}/dts`)),
+        compilationResult.js.pipe(dest(`${artifactsPath}/${DIST_DEST}`)),
+        compilationResult.dts.pipe(dest(`${artifactsPath}/${TYPEDEF_DEST}`)),
     ])
 }
 
@@ -170,7 +171,7 @@ function copyPackageFiles(artifactsPath: string) {
 function updatePackageJson(artifactsPath: string) {
     return src(`${artifactsPath}/package.json`)
         .pipe(jsonEditor((json: Record<string, any>) => {
-            json.main = `${LIB_DEST}/index.js`
+            json.main = `${DIST_DEST}/index.js`
             json.types = `${TYPEDEF_DEST}/index.d.ts`
             json.devDependencies = undefined
             json.private = undefined

@@ -1,5 +1,5 @@
 {
-    "extends": "../tsconfig.common.json",
+    "extends": "../tsconfig-common.json",
     "compilerOptions": {
         "experimentalDecorators": true,
         "noImplicitAny": false,
@@ -7,7 +7,7 @@
         "noEmit": true,
         "noEmitOnError": false,
         "noImplicitReturns": false,
-        "noUnusedLocals": false,
+        "noUnusedLocals": false
     },
     "include": [
         "*.ts",
