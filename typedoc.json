@@ -1,0 +1,13 @@
+{
+    "mode": "file",
+    "out": "docs/api",
+    "plugin": "typedoc-plugin-markdown",
+    "name": "Ortho Remote",
+    "excludePrivate": true,
+    "excludeNotExported": true,
+    "excludeExternals": true,
+    "hideGenerator": true,
+    "hideSources": true,
+    "listInvalidSymbolLinks": true,
+    "readme": "none"
+}
