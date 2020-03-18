@@ -1,9 +1,9 @@
 {
-    "extends": "../tsconfig.common.json",
+    "extends": "../tsconfig-common.json",
     "compilerOptions": {
         "noEmit": true,
         "noEmitOnError": false,
-        "outDir": "./",
+        "outDir": "./"
     },
     "include": [
         "**/*.ts"
