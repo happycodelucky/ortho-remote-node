@@ -1,4 +1,4 @@
-[Ortho Remote](../README.md) › [DeviceDiscoveryManager](devicediscoverymanager.md)
+[Ortho Remote - v0.2.1](../README.md) / DeviceDiscoveryManager
 
 # Class: DeviceDiscoveryManager
 
@@ -6,30 +6,25 @@ A device manager is the main entry for connecting to Ortho Remote devices. It of
 
 ## Hierarchy
 
-* EventEmitter
-
-* EventEmitter
+* *EventEmitter*
 
   ↳ **DeviceDiscoveryManager**
 
 ## Index
 
-### Properties
+### Constructors
 
-* [defaultMaxListeners](devicediscoverymanager.md#static-defaultmaxlisteners)
+* [constructor](devicediscoverymanager.md#constructor)
 
 ### Accessors
 
+* [defaultManager](devicediscoverymanager.md#defaultmanager)
 * [discoveredDevices](devicediscoverymanager.md#discovereddevices)
 * [discoveryState](devicediscoverymanager.md#discoverystate)
-* [defaultManager](devicediscoverymanager.md#static-defaultmanager)
 
 ### Methods
 
 * [addListener](devicediscoverymanager.md#addlistener)
-* [emit](devicediscoverymanager.md#emit)
-* [eventNames](devicediscoverymanager.md#eventnames)
-* [getMaxListeners](devicediscoverymanager.md#getmaxlisteners)
 * [listenerCount](devicediscoverymanager.md#listenercount)
 * [listeners](devicediscoverymanager.md#listeners)
 * [off](devicediscoverymanager.md#off)
@@ -37,712 +32,375 @@ A device manager is the main entry for connecting to Ortho Remote devices. It of
 * [once](devicediscoverymanager.md#once)
 * [prependListener](devicediscoverymanager.md#prependlistener)
 * [prependOnceListener](devicediscoverymanager.md#prependoncelistener)
-* [rawListeners](devicediscoverymanager.md#rawlisteners)
-* [removeAllListeners](devicediscoverymanager.md#removealllisteners)
 * [removeListener](devicediscoverymanager.md#removelistener)
-* [setMaxListeners](devicediscoverymanager.md#setmaxlisteners)
 * [startDiscoverySession](devicediscoverymanager.md#startdiscoverysession)
 * [stopDiscovery](devicediscoverymanager.md#stopdiscovery)
 * [stopDiscoverySession](devicediscoverymanager.md#stopdiscoverysession)
-* [listenerCount](devicediscoverymanager.md#static-listenercount)
 
-## Properties
+## Constructors
 
-### `Static` defaultMaxListeners
+### constructor
 
-▪ **defaultMaxListeners**: *number*
-
-*Inherited from void*
-
-*Overrides void*
+• **constructor**: 
 
 ## Accessors
 
-###  discoveredDevices
+### defaultManager
 
-• **get discoveredDevices**(): *[OrthoRemote](orthoremote.md)[]*
-
-All discovered devices by the device manager
-
-**Returns:** *[OrthoRemote](orthoremote.md)[]*
-
-___
-
-###  discoveryState
-
-• **get discoveryState**(): *[DeviceDiscoveryState](../enums/devicediscoverystate.md)*
-
-Active discovery state
-
-**Returns:** *[DeviceDiscoveryState](../enums/devicediscoverystate.md)*
-
-___
-
-### `Static` defaultManager
-
-• **get defaultManager**(): *[DeviceDiscoveryManager](devicediscoverymanager.md)*
+• **defaultManager**(): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
 Default device discovery manager to manage discovery of one or more Ortho Remote devices
 
-**Returns:** *[DeviceDiscoveryManager](devicediscoverymanager.md)*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
+
+___
+
+### discoveredDevices
+
+• **discoveredDevices**(): [*OrthoRemote*](orthoremote.md)[]
+
+All discovered devices by the device manager
+
+**Returns:** [*OrthoRemote*](orthoremote.md)[]
+
+___
+
+### discoveryState
+
+• **discoveryState**(): [*DeviceDiscoveryState*](../enums/devicediscoverystate.md)
+
+Active discovery state
+
+**Returns:** [*DeviceDiscoveryState*](../enums/devicediscoverystate.md)
 
 ## Methods
 
-###  addListener
+### addListener
 
-▸ **addListener**(`event`: string | symbol, `listener`: function): *this*
+▸ **addListener**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **addListener**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **addListener**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **addListener**(`eventName`: "error", `listener`: [OnErrorCallback](../interfaces/onerrorcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "error" |
-`listener` | [OnErrorCallback](../interfaces/onerrorcallback.md) |
+`eventName` | *error* |
+`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **addListener**(`eventName`: "started" | "stopped", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
+▸ **addListener**(`eventName`: *started* \| *stopped*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "started" &#124; "stopped" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *started* \| *stopped* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
 ___
 
-###  emit
+### listenerCount
 
-▸ **emit**(`event`: string | symbol, ...`args`: any[]): *boolean*
+▸ **listenerCount**(`type`: *error* \| *device* \| *started* \| *stopped*): *number*
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`event` | string &#124; symbol |
-`...args` | any[] |
-
-**Returns:** *boolean*
-
-___
-
-###  eventNames
-
-▸ **eventNames**(): *Array‹string | symbol›*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Returns:** *Array‹string | symbol›*
-
-___
-
-###  getMaxListeners
-
-▸ **getMaxListeners**(): *number*
-
-*Inherited from void*
-
-*Overrides void*
+`type` | *error* \| *device* \| *started* \| *stopped* |
 
 **Returns:** *number*
 
 ___
 
-###  listenerCount
+### listeners
 
-▸ **listenerCount**(`type`: string | symbol): *number*
+▸ **listeners**(`eventName`: *device*): [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)[]
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`type` | string &#124; symbol |
+`eventName` | *device* |
 
-**Returns:** *number*
+**Returns:** [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)[]
 
-▸ **listenerCount**(`type`: "device" | "error" | "started" | "stopped"): *number*
+▸ **listeners**(`eventName`: *error*): [*OnErrorCallback*](../interfaces/onerrorcallback.md)[]
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`type` | "device" &#124; "error" &#124; "started" &#124; "stopped" |
+`eventName` | *error* |
 
-**Returns:** *number*
+**Returns:** [*OnErrorCallback*](../interfaces/onerrorcallback.md)[]
+
+▸ **listeners**(`eventName`: *started* \| *stopped*): [*OnEventCallback*](../interfaces/oneventcallback.md)[]
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`eventName` | *started* \| *stopped* |
+
+**Returns:** [*OnEventCallback*](../interfaces/oneventcallback.md)[]
 
 ___
 
-###  listeners
+### off
 
-▸ **listeners**(`event`: string | symbol): *Function[]*
+▸ **off**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`event` | string &#124; symbol |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *Function[]*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **listeners**(`eventName`: "device"): *[OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)[]*
+▸ **off**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-
-**Returns:** *[OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)[]*
-
-▸ **listeners**(`eventName`: "error"): *[OnErrorCallback](../interfaces/onerrorcallback.md)[]*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "error" |
+`eventName` | *error* |
+`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
 
-**Returns:** *[OnErrorCallback](../interfaces/onerrorcallback.md)[]*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **listeners**(`eventName`: "started" | "stopped"): *[OnEventCallback](../interfaces/oneventcallback.md)[]*
+▸ **off**(`eventName`: *started* \| *stopped*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "started" &#124; "stopped" |
+`eventName` | *started* \| *stopped* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *[OnEventCallback](../interfaces/oneventcallback.md)[]*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
 ___
 
-###  off
+### on
 
-▸ **off**(`event`: string | symbol, `listener`: function): *this*
+▸ **on**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **off**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **on**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **off**(`eventName`: "error", `listener`: [OnErrorCallback](../interfaces/onerrorcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "error" |
-`listener` | [OnErrorCallback](../interfaces/onerrorcallback.md) |
+`eventName` | *error* |
+`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **off**(`eventName`: "started" | "stopped", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
+▸ **on**(`eventName`: *started* \| *stopped*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "started" &#124; "stopped" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *started* \| *stopped* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
 ___
 
-###  on
+### once
 
-▸ **on**(`event`: string | symbol, `listener`: function): *this*
+▸ **once**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **on**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **once**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **on**(`eventName`: "error", `listener`: [OnErrorCallback](../interfaces/onerrorcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "error" |
-`listener` | [OnErrorCallback](../interfaces/onerrorcallback.md) |
+`eventName` | *error* |
+`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **on**(`eventName`: "started" | "stopped", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
+▸ **once**(`eventName`: *started* \| *stopped*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "started" &#124; "stopped" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *started* \| *stopped* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
 ___
 
-###  once
+### prependListener
 
-▸ **once**(`event`: string | symbol, `listener`: function): *this*
+▸ **prependListener**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **once**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **prependListener**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **once**(`eventName`: "error", `listener`: [OnErrorCallback](../interfaces/onerrorcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "error" |
-`listener` | [OnErrorCallback](../interfaces/onerrorcallback.md) |
+`eventName` | *error* |
+`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **once**(`eventName`: "started" | "stopped", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
+▸ **prependListener**(`eventName`: *started* \| *stopped*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "started" &#124; "stopped" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *started* \| *stopped* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
 ___
 
-###  prependListener
+### prependOnceListener
 
-▸ **prependListener**(`event`: string | symbol, `listener`: function): *this*
+▸ **prependOnceListener**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **prependListener**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **prependOnceListener**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **prependListener**(`eventName`: "error", `listener`: [OnErrorCallback](../interfaces/onerrorcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "error" |
-`listener` | [OnErrorCallback](../interfaces/onerrorcallback.md) |
+`eventName` | *error* |
+`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **prependListener**(`eventName`: "started" | "stopped", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
+▸ **prependOnceListener**(`eventName`: *started* \| *stopped*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "started" &#124; "stopped" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *started* \| *stopped* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
 ___
 
-###  prependOnceListener
+### removeListener
 
-▸ **prependOnceListener**(`event`: string | symbol, `listener`: function): *this*
+▸ **removeListener**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **prependOnceListener**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **removeListener**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **prependOnceListener**(`eventName`: "error", `listener`: [OnErrorCallback](../interfaces/onerrorcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "error" |
-`listener` | [OnErrorCallback](../interfaces/onerrorcallback.md) |
+`eventName` | *error* |
+`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-▸ **prependOnceListener**(`eventName`: "started" | "stopped", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
+▸ **removeListener**(`eventName`: *started* \| *stopped*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "started" &#124; "stopped" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *started* \| *stopped* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
 ___
 
-###  rawListeners
+### startDiscoverySession
 
-▸ **rawListeners**(`event`: string | symbol): *Function[]*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`event` | string &#124; symbol |
-
-**Returns:** *Function[]*
-
-___
-
-###  removeAllListeners
-
-▸ **removeAllListeners**(`event?`: string | symbol): *this*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`event?` | string &#124; symbol |
-
-**Returns:** *this*
-
-___
-
-###  removeListener
-
-▸ **removeListener**(`event`: string | symbol, `listener`: function): *this*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`...args` | any[] |
-
-**Returns:** *this*
-
-▸ **removeListener**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **removeListener**(`eventName`: "error", `listener`: [OnErrorCallback](../interfaces/onerrorcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "error" |
-`listener` | [OnErrorCallback](../interfaces/onerrorcallback.md) |
-
-**Returns:** *this*
-
-▸ **removeListener**(`eventName`: "started" | "stopped", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "started" &#124; "stopped" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
-
-**Returns:** *this*
-
-___
-
-###  setMaxListeners
-
-▸ **setMaxListeners**(`n`: number): *this*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`n` | number |
-
-**Returns:** *this*
-
-___
-
-###  startDiscoverySession
-
-▸ **startDiscoverySession**(`options?`: [DeviceDiscoverySessionOptions](../interfaces/devicediscoverysessionoptions.md)): *[DeviceDiscoverySession](devicediscoverysession.md)*
+▸ **startDiscoverySession**(`options?`: [*DeviceDiscoverySessionOptions*](../interfaces/devicediscoverysessionoptions.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
 Start a new discovery session to discover Ortho Remote devices
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`options?` | [DeviceDiscoverySessionOptions](../interfaces/devicediscoverysessionoptions.md) | discovery session options |
+`options?` | [*DeviceDiscoverySessionOptions*](../interfaces/devicediscoverysessionoptions.md) | discovery session options   |
 
-**Returns:** *[DeviceDiscoverySession](devicediscoverysession.md)*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
 Session object initialized based on options and to observe discovery events on
 
 ___
 
-###  stopDiscovery
+### stopDiscovery
 
 ▸ **stopDiscovery**(): *void*
 
@@ -752,40 +410,19 @@ Stops _all_ discovery sessions in progress
 
 ___
 
-###  stopDiscoverySession
+### stopDiscoverySession
 
-▸ **stopDiscoverySession**(`session`: [DeviceDiscoverySession](devicediscoverysession.md)): *void*
+▸ **stopDiscoverySession**(`session`: [*DeviceDiscoverySession*](devicediscoverysession.md)): *void*
 
 Stops and removes a session from the list of managed sessions.
 When all session have been removed discovery will cease.
 
 Use `DeviceDiscoverySession.stop`
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`session` | [DeviceDiscoverySession](devicediscoverysession.md) | session to remove  |
+`session` | [*DeviceDiscoverySession*](devicediscoverysession.md) | session to remove    |
 
 **Returns:** *void*
-
-___
-
-### `Static` listenerCount
-
-▸ **listenerCount**(`emitter`: EventEmitter, `event`: string | symbol): *number*
-
-*Inherited from void*
-
-*Overrides void*
-
-**`deprecated`** since v4.0.0
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`emitter` | EventEmitter |
-`event` | string &#124; symbol |
-
-**Returns:** *number*

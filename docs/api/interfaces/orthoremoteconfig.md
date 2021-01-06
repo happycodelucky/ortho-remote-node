@@ -1,4 +1,4 @@
-[Ortho Remote](../README.md) › [OrthoRemoteConfig](orthoremoteconfig.md)
+[Ortho Remote - v0.2.1](../README.md) / OrthoRemoteConfig
 
 # Interface: OrthoRemoteConfig
 
@@ -12,13 +12,13 @@ Configuration and behavior options for `OrthoRemote`
 
 ### Properties
 
-* [normalizeData](orthoremoteconfig.md#optional-normalizedata)
+* [normalizeData](orthoremoteconfig.md#normalizedata)
 
 ## Properties
 
-### `Optional` normalizeData
+### normalizeData
 
-• **normalizeData**? : *undefined | false | true*
+• `Optional` **normalizeData**: *undefined* \| *boolean*
 
 Normalized Ortho Remote rotation event values between 0.0 - 0.1
 Set to `false` to preserve raw values from Ortho Remote

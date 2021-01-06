@@ -1,4 +1,4 @@
-[Ortho Remote](../README.md) › [MidiData](mididata.md)
+[Ortho Remote - v0.2.1](../README.md) / MidiData
 
 # Interface: MidiData
 
@@ -19,7 +19,7 @@ MIDI data
 
 ## Properties
 
-###  channel
+### channel
 
 • **channel**: *number*
 
@@ -27,7 +27,7 @@ Channel
 
 ___
 
-###  data
+### data
 
 • **data**: *Uint8Array*
 
@@ -35,15 +35,15 @@ Midi data
 
 ___
 
-###  message
+### message
 
-• **message**: *[MidiMessage](../enums/midimessage.md)*
+• **message**: [*MidiMessage*](../enums/midimessage.md)
 
 Status
 
 ___
 
-###  timestamp
+### timestamp
 
 • **timestamp**: *number*
 

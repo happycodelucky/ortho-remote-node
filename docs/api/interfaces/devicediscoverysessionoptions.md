@@ -1,4 +1,4 @@
-[Ortho Remote](../README.md) › [DeviceDiscoverySessionOptions](devicediscoverysessionoptions.md)
+[Ortho Remote - v0.2.1](../README.md) / DeviceDiscoverySessionOptions
 
 # Interface: DeviceDiscoverySessionOptions
 
@@ -12,22 +12,22 @@ Options given when starting a new discovery session for Ortho Remote devices
 
 ### Properties
 
-* [deviceIds](devicediscoverysessionoptions.md#optional-deviceids)
-* [timeoutMs](devicediscoverysessionoptions.md#optional-timeoutms)
+* [deviceIds](devicediscoverysessionoptions.md#deviceids)
+* [timeoutMs](devicediscoverysessionoptions.md#timeoutms)
 
 ## Properties
 
-### `Optional` deviceIds
+### deviceIds
 
-• **deviceIds**? : *string[]*
+• `Optional` **deviceIds**: *undefined* \| *string*[]
 
 List of know device IDs to discover
 When specified only those devices white listed will be evented
 
 ___
 
-### `Optional` timeoutMs
+### timeoutMs
 
-• **timeoutMs**? : *undefined | number*
+• `Optional` **timeoutMs**: *undefined* \| *number*
 
 Timeout in milliseconds before auto-stopping discovery

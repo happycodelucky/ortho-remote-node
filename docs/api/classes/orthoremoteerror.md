@@ -1,4 +1,4 @@
-[Ortho Remote](../README.md) › [OrthoRemoteError](orthoremoteerror.md)
+[Ortho Remote - v0.2.1](../README.md) / OrthoRemoteError
 
 # Class: OrthoRemoteError
 
@@ -6,49 +6,20 @@ Generic error message for all Ortho Remote errors
 
 ## Hierarchy
 
-* [Error](orthoremoteerror.md#static-error)
+* *Error*
 
   ↳ **OrthoRemoteError**
 
-  ↳ [OrthoRemoteCommunicationError](orthoremotecommunicationerror.md)
+  ↳↳ [*OrthoRemoteCommunicationError*](orthoremotecommunicationerror.md)
 
 ## Index
 
-### Properties
+### Constructors
 
-* [message](orthoremoteerror.md#message)
-* [name](orthoremoteerror.md#name)
-* [stack](orthoremoteerror.md#optional-stack)
-* [Error](orthoremoteerror.md#static-error)
+* [constructor](orthoremoteerror.md#constructor)
 
-## Properties
+## Constructors
 
-###  message
+### constructor
 
-• **message**: *string*
-
-*Inherited from [OrthoRemoteError](orthoremoteerror.md).[message](orthoremoteerror.md#message)*
-
-___
-
-###  name
-
-• **name**: *string*
-
-*Inherited from [OrthoRemoteError](orthoremoteerror.md).[name](orthoremoteerror.md#name)*
-
-___
-
-### `Optional` stack
-
-• **stack**? : *undefined | string*
-
-*Inherited from [OrthoRemoteError](orthoremoteerror.md).[stack](orthoremoteerror.md#optional-stack)*
-
-*Overrides [OrthoRemoteError](orthoremoteerror.md).[stack](orthoremoteerror.md#optional-stack)*
-
-___
-
-### `Static` Error
-
-▪ **Error**: *ErrorConstructor*
+• **constructor**:

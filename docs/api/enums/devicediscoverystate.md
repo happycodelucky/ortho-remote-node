@@ -1,4 +1,4 @@
-[Ortho Remote](../README.md) › [DeviceDiscoveryState](devicediscoverystate.md)
+[Ortho Remote - v0.2.1](../README.md) / DeviceDiscoveryState
 
 # Enumeration: DeviceDiscoveryState
 
@@ -15,7 +15,7 @@ State of discovery for a DeviceDiscoverySession or DeviceDiscoveryManager
 
 ## Enumeration members
 
-###  BluetoothUnavailable
+### BluetoothUnavailable
 
 • **BluetoothUnavailable**: = 1
 
@@ -23,7 +23,7 @@ Bluetooth is unavailable, such as the case when the radio is powered down
 
 ___
 
-###  Discovering
+### Discovering
 
 • **Discovering**: = 17
 
@@ -31,7 +31,7 @@ Actively discovering devices
 
 ___
 
-###  Initial
+### Initial
 
 • **Initial**: = 0
 
@@ -39,7 +39,7 @@ Initial, no discovery has been performed
 
 ___
 
-###  Ready
+### Ready
 
 • **Ready**: = 16
 

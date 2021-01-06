@@ -1,4 +1,4 @@
-[Ortho Remote](../README.md) › [OnErrorCallback](onerrorcallback.md)
+[Ortho Remote - v0.2.1](../README.md) / OnErrorCallback
 
 # Interface: OnErrorCallback
 
@@ -10,14 +10,14 @@ Callback for all `error` events
 
 ## Callable
 
-▸ (`error`: [OrthoRemoteError](../classes/orthoremoteerror.md)): *void*
+▸ **OnErrorCallback**(`error`: [*OrthoRemoteError*](../classes/orthoremoteerror.md)): *void*
 
 Callback for all `error` events
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`error` | [OrthoRemoteError](../classes/orthoremoteerror.md) | Evented error  |
+`error` | [*OrthoRemoteError*](../classes/orthoremoteerror.md) | Evented error    |
 
 **Returns:** *void*

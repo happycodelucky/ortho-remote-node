@@ -1,4 +1,4 @@
-[Ortho Remote](../README.md) › [DeviceDiscoverySession](devicediscoverysession.md)
+[Ortho Remote - v0.2.1](../README.md) / DeviceDiscoverySession
 
 # Class: DeviceDiscoverySession
 
@@ -8,18 +8,19 @@ Do not create a session manually, instead use DeviceDiscoveryManager to start di
 
 ## Hierarchy
 
-* EventEmitter
-
-* EventEmitter
+* *EventEmitter*
 
   ↳ **DeviceDiscoverySession**
 
 ## Index
 
+### Constructors
+
+* [constructor](devicediscoverysession.md#constructor)
+
 ### Properties
 
 * [deviceManager](devicediscoverysession.md#devicemanager)
-* [defaultMaxListeners](devicediscoverysession.md#static-defaultmaxlisteners)
 
 ### Accessors
 
@@ -29,9 +30,6 @@ Do not create a session manually, instead use DeviceDiscoveryManager to start di
 ### Methods
 
 * [addListener](devicediscoverysession.md#addlistener)
-* [emit](devicediscoverysession.md#emit)
-* [eventNames](devicediscoverysession.md#eventnames)
-* [getMaxListeners](devicediscoverysession.md#getmaxlisteners)
 * [listenerCount](devicediscoverysession.md#listenercount)
 * [listeners](devicediscoverysession.md#listeners)
 * [off](devicediscoverysession.md#off)
@@ -39,691 +37,354 @@ Do not create a session manually, instead use DeviceDiscoveryManager to start di
 * [once](devicediscoverysession.md#once)
 * [prependListener](devicediscoverysession.md#prependlistener)
 * [prependOnceListener](devicediscoverysession.md#prependoncelistener)
-* [rawListeners](devicediscoverysession.md#rawlisteners)
-* [removeAllListeners](devicediscoverysession.md#removealllisteners)
 * [removeListener](devicediscoverysession.md#removelistener)
-* [setMaxListeners](devicediscoverysession.md#setmaxlisteners)
 * [stop](devicediscoverysession.md#stop)
 * [waitForFirstDevice](devicediscoverysession.md#waitforfirstdevice)
-* [listenerCount](devicediscoverysession.md#static-listenercount)
+
+## Constructors
+
+### constructor
+
+• **constructor**: 
 
 ## Properties
 
-###  deviceManager
+### deviceManager
 
-• **deviceManager**: *[DeviceDiscoveryManager](devicediscoverymanager.md)*
+• `Readonly` **deviceManager**: [*DeviceDiscoveryManager*](devicediscoverymanager.md)
 
 Vending device manager
 
-___
-
-### `Static` defaultMaxListeners
-
-▪ **defaultMaxListeners**: *number*
-
-*Inherited from void*
-
-*Overrides void*
-
 ## Accessors
 
-###  discoveredDevices
+### discoveredDevices
 
-• **get discoveredDevices**(): *[OrthoRemote](orthoremote.md)[]*
+• **discoveredDevices**(): [*OrthoRemote*](orthoremote.md)[]
 
 All discovered devices by the device manager
 
-**Returns:** *[OrthoRemote](orthoremote.md)[]*
+**Returns:** [*OrthoRemote*](orthoremote.md)[]
 
 ___
 
-###  discoveryState
+### discoveryState
 
-• **get discoveryState**(): *[DeviceDiscoveryState](../enums/devicediscoverystate.md)*
+• **discoveryState**(): [*DeviceDiscoveryState*](../enums/devicediscoverystate.md)
 
 Discovery state for the session
 
-**Returns:** *[DeviceDiscoveryState](../enums/devicediscoverystate.md)*
+**Returns:** [*DeviceDiscoveryState*](../enums/devicediscoverystate.md)
 
 ## Methods
 
-###  addListener
+### addListener
 
-▸ **addListener**(`event`: string | symbol, `listener`: function): *this*
+▸ **addListener**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **addListener**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **addListener**(`eventName`: *timeout*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **addListener**(`eventName`: "timeout", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "timeout" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *timeout* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **addListener**(`eventName`: "done", `listener`: [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md)): *this*
+▸ **addListener**(`eventName`: *done*, `listener`: [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "done" |
-`listener` | [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md) |
+`eventName` | *done* |
+`listener` | [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
 ___
 
-###  emit
+### listenerCount
 
-▸ **emit**(`event`: string | symbol, ...`args`: any[]): *boolean*
+▸ **listenerCount**(`type`: *device* \| *timeout* \| *done*): *number*
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`event` | string &#124; symbol |
-`...args` | any[] |
-
-**Returns:** *boolean*
-
-___
-
-###  eventNames
-
-▸ **eventNames**(): *Array‹string | symbol›*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Returns:** *Array‹string | symbol›*
-
-___
-
-###  getMaxListeners
-
-▸ **getMaxListeners**(): *number*
-
-*Inherited from void*
-
-*Overrides void*
+`type` | *device* \| *timeout* \| *done* |
 
 **Returns:** *number*
 
 ___
 
-###  listenerCount
+### listeners
 
-▸ **listenerCount**(`type`: string | symbol): *number*
+▸ **listeners**(`eventName`: *device*): [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)[]
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`type` | string &#124; symbol |
+`eventName` | *device* |
 
-**Returns:** *number*
+**Returns:** [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)[]
 
-▸ **listenerCount**(`type`: "device" | "timeout" | "done"): *number*
+▸ **listeners**(`eventName`: *timeout*): [*OnEventCallback*](../interfaces/oneventcallback.md)[]
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`type` | "device" &#124; "timeout" &#124; "done" |
+`eventName` | *timeout* |
 
-**Returns:** *number*
+**Returns:** [*OnEventCallback*](../interfaces/oneventcallback.md)[]
+
+▸ **listeners**(`eventName`: *done*): [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md)[]
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`eventName` | *done* |
+
+**Returns:** [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md)[]
 
 ___
 
-###  listeners
+### off
 
-▸ **listeners**(`event`: string | symbol): *Function[]*
+▸ **off**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`event` | string &#124; symbol |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *Function[]*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **listeners**(`eventName`: "device"): *[OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)[]*
+▸ **off**(`eventName`: *timeout*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-
-**Returns:** *[OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)[]*
-
-▸ **listeners**(`eventName`: "timeout"): *[OnEventCallback](../interfaces/oneventcallback.md)[]*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "timeout" |
+`eventName` | *timeout* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *[OnEventCallback](../interfaces/oneventcallback.md)[]*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **listeners**(`eventName`: "done"): *[OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md)[]*
+▸ **off**(`eventName`: *done*, `listener`: [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "done" |
+`eventName` | *done* |
+`listener` | [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md) |
 
-**Returns:** *[OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md)[]*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
 ___
 
-###  off
+### on
 
-▸ **off**(`event`: string | symbol, `listener`: function): *this*
+▸ **on**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **off**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **on**(`eventName`: *timeout*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **off**(`eventName`: "timeout", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "timeout" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *timeout* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **off**(`eventName`: "done", `listener`: [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md)): *this*
+▸ **on**(`eventName`: *done*, `listener`: [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "done" |
-`listener` | [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md) |
+`eventName` | *done* |
+`listener` | [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
 ___
 
-###  on
+### once
 
-▸ **on**(`event`: string | symbol, `listener`: function): *this*
+▸ **once**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **on**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **once**(`eventName`: *timeout*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **on**(`eventName`: "timeout", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "timeout" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *timeout* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **on**(`eventName`: "done", `listener`: [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md)): *this*
+▸ **once**(`eventName`: *done*, `listener`: [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "done" |
-`listener` | [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md) |
+`eventName` | *done* |
+`listener` | [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
 ___
 
-###  once
+### prependListener
 
-▸ **once**(`event`: string | symbol, `listener`: function): *this*
+▸ **prependListener**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **once**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **prependListener**(`eventName`: *timeout*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **once**(`eventName`: "timeout", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "timeout" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *timeout* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **once**(`eventName`: "done", `listener`: [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md)): *this*
+▸ **prependListener**(`eventName`: *done*, `listener`: [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "done" |
-`listener` | [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md) |
+`eventName` | *done* |
+`listener` | [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
 ___
 
-###  prependListener
+### prependOnceListener
 
-▸ **prependListener**(`event`: string | symbol, `listener`: function): *this*
+▸ **prependOnceListener**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **prependListener**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **prependOnceListener**(`eventName`: *timeout*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **prependListener**(`eventName`: "timeout", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "timeout" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *timeout* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **prependListener**(`eventName`: "done", `listener`: [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md)): *this*
+▸ **prependOnceListener**(`eventName`: *done*, `listener`: [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "done" |
-`listener` | [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md) |
+`eventName` | *done* |
+`listener` | [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
 ___
 
-###  prependOnceListener
+### removeListener
 
-▸ **prependOnceListener**(`event`: string | symbol, `listener`: function): *this*
+▸ **removeListener**(`eventName`: *device*, `listener`: [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`...args` | any[] |
+`eventName` | *device* |
+`listener` | [*OnDeviceDiscoveredCallback*](../interfaces/ondevicediscoveredcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **prependOnceListener**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
+▸ **removeListener**(`eventName`: *timeout*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **prependOnceListener**(`eventName`: "timeout", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "timeout" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
+`eventName` | *timeout* |
+`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-▸ **prependOnceListener**(`eventName`: "done", `listener`: [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md)): *this*
+▸ **removeListener**(`eventName`: *done*, `listener`: [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md)): [*DeviceDiscoverySession*](devicediscoverysession.md)
 
-*Inherited from void*
-
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`eventName` | "done" |
-`listener` | [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md) |
+`eventName` | *done* |
+`listener` | [*OnDiscoveryDoneCallback*](../interfaces/ondiscoverydonecallback.md) |
 
-**Returns:** *this*
+**Returns:** [*DeviceDiscoverySession*](devicediscoverysession.md)
 
 ___
 
-###  rawListeners
-
-▸ **rawListeners**(`event`: string | symbol): *Function[]*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`event` | string &#124; symbol |
-
-**Returns:** *Function[]*
-
-___
-
-###  removeAllListeners
-
-▸ **removeAllListeners**(`event?`: string | symbol): *this*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`event?` | string &#124; symbol |
-
-**Returns:** *this*
-
-___
-
-###  removeListener
-
-▸ **removeListener**(`event`: string | symbol, `listener`: function): *this*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-▪ **event**: *string | symbol*
-
-▪ **listener**: *function*
-
-▸ (...`args`: any[]): *void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`...args` | any[] |
-
-**Returns:** *this*
-
-▸ **removeListener**(`eventName`: "device", `listener`: [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "device" |
-`listener` | [OnDeviceDiscoveredCallback](../interfaces/ondevicediscoveredcallback.md) |
-
-**Returns:** *this*
-
-▸ **removeListener**(`eventName`: "timeout", `listener`: [OnEventCallback](../interfaces/oneventcallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "timeout" |
-`listener` | [OnEventCallback](../interfaces/oneventcallback.md) |
-
-**Returns:** *this*
-
-▸ **removeListener**(`eventName`: "done", `listener`: [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md)): *this*
-
-*Inherited from void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`eventName` | "done" |
-`listener` | [OnDiscoveryDoneCallback](../interfaces/ondiscoverydonecallback.md) |
-
-**Returns:** *this*
-
-___
-
-###  setMaxListeners
-
-▸ **setMaxListeners**(`n`: number): *this*
-
-*Inherited from void*
-
-*Overrides void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`n` | number |
-
-**Returns:** *this*
-
-___
-
-###  stop
+### stop
 
 ▸ **stop**(): *void*
 
@@ -733,39 +394,18 @@ Stop device discover for this session
 
 ___
 
-###  waitForFirstDevice
+### waitForFirstDevice
 
-▸ **waitForFirstDevice**(`autoStop`: boolean): *Promise‹[OrthoRemote](orthoremote.md)›*
+▸ **waitForFirstDevice**(`autoStop?`: *boolean*): *Promise*<[*OrthoRemote*](orthoremote.md)\>
 
 Waits for a single (first) device or until time out, if specified when creating the session
 
 **`throw`** `NuimoDeviceError` when timing out
 
-**Parameters:**
+#### Parameters:
 
-Name | Type | Default |
+Name | Type | Default value |
 ------ | ------ | ------ |
-`autoStop` | boolean | true |
+`autoStop` | *boolean* | true |
 
-**Returns:** *Promise‹[OrthoRemote](orthoremote.md)›*
-
-___
-
-### `Static` listenerCount
-
-▸ **listenerCount**(`emitter`: EventEmitter, `event`: string | symbol): *number*
-
-*Inherited from void*
-
-*Overrides void*
-
-**`deprecated`** since v4.0.0
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`emitter` | EventEmitter |
-`event` | string &#124; symbol |
-
-**Returns:** *number*
+**Returns:** *Promise*<[*OrthoRemote*](orthoremote.md)\>
