@@ -281,7 +281,9 @@ export class DeviceDiscoveryManager extends EventEmitter {
         debug('Beginning device discovery session')
         this.managerDiscoveryState = DeviceDiscoveryState.Discovering
         this.activeSessions.forEach(session => { session.startDiscovery() })
-        noble.startScanning()
+        noble.startScanningAsync().catch(err => {
+            this.emit('error', err)
+        })
 
         this.emit('started')
     }
