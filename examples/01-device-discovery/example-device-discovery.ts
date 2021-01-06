@@ -1,5 +1,5 @@
 import { DeviceDiscoveryManager } from '../..'
-import { DEVICE_DISCOVERY_TIMEOUT_MS } from '../..'
+import { DEVICE_DISCOVERY_TIMEOUT_MS } from '../defaults'
 
 // Device connection manager
 const manager = DeviceDiscoveryManager.defaultManager

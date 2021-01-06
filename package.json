@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@types/chai-as-promised": "^7.1",
-    "@types/chalk": "^2.2.0",
     "@types/check-types": "^7.3",
     "@types/debug": "^4.1",
     "@types/del": "^3.0",

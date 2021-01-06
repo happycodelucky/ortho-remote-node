@@ -25,9 +25,17 @@ Class of error related to device communication errors with a known device
 
 ### constructor
 
-• **constructor**: 
+\+ **new OrthoRemoteCommunicationError**(`code`: [*OrthoRemoteCommunicationErrorCode*](../enums/orthoremotecommunicationerrorcode.md), `id`: *string*, `message?`: *string*): [*OrthoRemoteCommunicationError*](orthoremotecommunicationerror.md)
 
-Inherited from: [OrthoRemoteError](orthoremoteerror.md).[constructor](orthoremoteerror.md#constructor)
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`code` | [*OrthoRemoteCommunicationErrorCode*](../enums/orthoremotecommunicationerrorcode.md) | connection error code   |
+`id` | *string* | device ID for the connection error    |
+`message?` | *string* | - |
+
+**Returns:** [*OrthoRemoteCommunicationError*](orthoremotecommunicationerror.md)
 
 ## Properties
 
