@@ -1,13 +1,13 @@
 {
   "name": "ortho-remote",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Client package for connecting to Ortho Remote Control by Teenage Engineering",
   "license": "MIT",
   "private": true,
-  "repository": "pryomoax/ortho-remote-node",
+  "repository": "happycodelucky/ortho-remote-node",
   "author": {
     "name": "Paul Bates",
-    "email": "paul.a.bates@gmail.com"
+    "email": "paul@happycodelucky.com"
   },
   "keywords": [
     "teenage engineering",
