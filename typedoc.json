@@ -1,13 +1,14 @@
 {
-    "mode": "file",
     "out": "docs/api",
     "plugin": "typedoc-plugin-markdown",
     "name": "Ortho Remote",
+    "disableSources": true,
+    "entryPoints": ["src/index.ts"],
     "excludePrivate": true,
-    "excludeNotExported": true,
     "excludeExternals": true,
+    "excludeProtected": true,
     "hideGenerator": true,
-    "hideSources": true,
+    "includeVersion": true,
     "listInvalidSymbolLinks": true,
     "readme": "none"
 }
