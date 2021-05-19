@@ -1,21 +1,21 @@
-[Ortho Remote - v0.2.1](../README.md) / MidiMessage
+[Ortho Remote - v0.4.0](../README.md) / MidiMessage
 
 # Enumeration: MidiMessage
 
 MIDI message type
 
-## Index
+## Table of contents
 
 ### Enumeration members
 
-* [ChannelPressure](midimessage.md#channelpressure)
-* [ControlChange](midimessage.md#controlchange)
-* [NoteOff](midimessage.md#noteoff)
-* [NoteOn](midimessage.md#noteon)
-* [PitchBand](midimessage.md#pitchband)
-* [PolyKeyPressure](midimessage.md#polykeypressure)
-* [ProgramChange](midimessage.md#programchange)
-* [SysEx](midimessage.md#sysex)
+- [ChannelPressure](midimessage.md#channelpressure)
+- [ControlChange](midimessage.md#controlchange)
+- [NoteOff](midimessage.md#noteoff)
+- [NoteOn](midimessage.md#noteon)
+- [PitchBand](midimessage.md#pitchband)
+- [PolyKeyPressure](midimessage.md#polykeypressure)
+- [ProgramChange](midimessage.md#programchange)
+- [SysEx](midimessage.md#sysex)
 
 ## Enumeration members
 

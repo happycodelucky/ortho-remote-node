@@ -1,12 +1,8 @@
-[Ortho Remote - v0.2.1](../README.md) / OnMidiCallback
+[Ortho Remote - v0.4.0](../README.md) / OnMidiCallback
 
 # Interface: OnMidiCallback
 
 Callback for `midi` events
-
-## Hierarchy
-
-* **OnMidiCallback**
 
 ## Callable
 
@@ -14,11 +10,11 @@ Callback for `midi` events
 
 Callback for `midi` events
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
------- | ------ | ------ |
-`data` | [*MidiData*](mididata.md) | MIDI data   |
-`rawData` | *Buffer* | raw MIDI data see specs/rp52public.pdf    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | [*MidiData*](mididata.md) | MIDI data |
+| `rawData` | *Buffer* | raw MIDI data see specs/rp52public.pdf |
 
 **Returns:** *void*

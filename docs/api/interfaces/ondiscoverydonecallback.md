@@ -1,12 +1,8 @@
-[Ortho Remote - v0.2.1](../README.md) / OnDiscoveryDoneCallback
+[Ortho Remote - v0.4.0](../README.md) / OnDiscoveryDoneCallback
 
 # Interface: OnDiscoveryDoneCallback
 
 Callback for all discovery session `done` events
-
-## Hierarchy
-
-* **OnDiscoveryDoneCallback**
 
 ## Callable
 
@@ -14,10 +10,10 @@ Callback for all discovery session `done` events
 
 Callback for all discovery session `done` events
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
------- | ------ | ------ |
-`timedOut` | *boolean* | Indicates if a discovery session timed out    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `timedOut` | *boolean* | Indicates if a discovery session timed out |
 
 **Returns:** *void*

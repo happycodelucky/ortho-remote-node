@@ -1,20 +1,20 @@
-[Ortho Remote - v0.2.1](../README.md) / OrthoRemoteCommunicationErrorCode
+[Ortho Remote - v0.4.0](../README.md) / OrthoRemoteCommunicationErrorCode
 
 # Enumeration: OrthoRemoteCommunicationErrorCode
 
 Error code for connection class errors for a device
 
-## Index
+## Table of contents
 
 ### Enumeration members
 
-* [Bluetooth](orthoremotecommunicationerrorcode.md#bluetooth)
-* [ConnectionTimeout](orthoremotecommunicationerrorcode.md#connectiontimeout)
-* [Disconnected](orthoremotecommunicationerrorcode.md#disconnected)
-* [NotAvailable](orthoremotecommunicationerrorcode.md#notavailable)
-* [NotConnectable](orthoremotecommunicationerrorcode.md#notconnectable)
-* [NotConnected](orthoremotecommunicationerrorcode.md#notconnected)
-* [Unknown](orthoremotecommunicationerrorcode.md#unknown)
+- [Bluetooth](orthoremotecommunicationerrorcode.md#bluetooth)
+- [ConnectionTimeout](orthoremotecommunicationerrorcode.md#connectiontimeout)
+- [Disconnected](orthoremotecommunicationerrorcode.md#disconnected)
+- [NotAvailable](orthoremotecommunicationerrorcode.md#notavailable)
+- [NotConnectable](orthoremotecommunicationerrorcode.md#notconnectable)
+- [NotConnected](orthoremotecommunicationerrorcode.md#notconnected)
+- [Unknown](orthoremotecommunicationerrorcode.md#unknown)
 
 ## Enumeration members
 

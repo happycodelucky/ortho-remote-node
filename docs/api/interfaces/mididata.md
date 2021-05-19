@@ -1,21 +1,17 @@
-[Ortho Remote - v0.2.1](../README.md) / MidiData
+[Ortho Remote - v0.4.0](../README.md) / MidiData
 
 # Interface: MidiData
 
 MIDI data
 
-## Hierarchy
-
-* **MidiData**
-
-## Index
+## Table of contents
 
 ### Properties
 
-* [channel](mididata.md#channel)
-* [data](mididata.md#data)
-* [message](mididata.md#message)
-* [timestamp](mididata.md#timestamp)
+- [channel](mididata.md#channel)
+- [data](mididata.md#data)
+- [message](mididata.md#message)
+- [timestamp](mididata.md#timestamp)
 
 ## Properties
 

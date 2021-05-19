@@ -1,12 +1,8 @@
-[Ortho Remote - v0.2.1](../README.md) / OnRssiCallback
+[Ortho Remote - v0.4.0](../README.md) / OnRssiCallback
 
 # Interface: OnRssiCallback
 
 Callback for 'rssi' events
-
-## Hierarchy
-
-* **OnRssiCallback**
 
 ## Callable
 
@@ -14,10 +10,10 @@ Callback for 'rssi' events
 
 Callback for 'rssi' events
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
------- | ------ | ------ |
-`rssi` | *number* | BT signal strenght in db    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `rssi` | *number* | BT signal strenght in db |
 
 **Returns:** *void*

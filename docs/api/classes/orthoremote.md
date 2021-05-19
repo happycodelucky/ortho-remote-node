@@ -1,4 +1,4 @@
-[Ortho Remote - v0.2.1](../README.md) / OrthoRemote
+[Ortho Remote - v0.4.0](../README.md) / OrthoRemote
 
 # Class: OrthoRemote
 
@@ -6,58 +6,48 @@ A Ortho Remote device client for interacting with BT Ortho Remote peripheral fro
 
 ## Hierarchy
 
-* *EventEmitter*
+- *EventEmitter*
 
   ↳ **OrthoRemote**
 
-## Index
-
-### Constructors
-
-* [constructor](orthoremote.md#constructor)
+## Table of contents
 
 ### Events
 
-* [batteryLevel](orthoremote.md#batterylevel)
-* [connect](orthoremote.md#connect)
-* [disconnect](orthoremote.md#disconnect)
-* [rotation](orthoremote.md#rotation)
-* [rssi](orthoremote.md#rssi)
+- [batteryLevel](orthoremote.md#batterylevel)
+- [connect](orthoremote.md#connect)
+- [disconnect](orthoremote.md#disconnect)
+- [rotation](orthoremote.md#rotation)
+- [rssi](orthoremote.md#rssi)
 
 ### Properties
 
-* [configuration](orthoremote.md#configuration)
-* [orthoRemotePeripheral](orthoremote.md#orthoremoteperipheral)
+- [configuration](orthoremote.md#configuration)
+- [orthoRemotePeripheral](orthoremote.md#orthoremoteperipheral)
 
 ### Accessors
 
-* [id](orthoremote.md#id)
-* [isConnected](orthoremote.md#isconnected)
+- [id](orthoremote.md#id)
+- [isConnected](orthoremote.md#isconnected)
 
 ### Methods
 
-* [addListener](orthoremote.md#addlistener)
-* [emit](orthoremote.md#emit)
-* [listenerCount](orthoremote.md#listenercount)
-* [listeners](orthoremote.md#listeners)
-* [off](orthoremote.md#off)
-* [on](orthoremote.md#on)
-* [once](orthoremote.md#once)
-* [prependListener](orthoremote.md#prependlistener)
-* [prependOnceListener](orthoremote.md#prependoncelistener)
-* [removeListener](orthoremote.md#removelistener)
-
-## Constructors
-
-### constructor
-
-• **constructor**: 
+- [addListener](orthoremote.md#addlistener)
+- [emit](orthoremote.md#emit)
+- [listenerCount](orthoremote.md#listenercount)
+- [listeners](orthoremote.md#listeners)
+- [off](orthoremote.md#off)
+- [on](orthoremote.md#on)
+- [once](orthoremote.md#once)
+- [prependListener](orthoremote.md#prependlistener)
+- [prependOnceListener](orthoremote.md#prependoncelistener)
+- [removeListener](orthoremote.md#removelistener)
 
 ## Events
 
 ### batteryLevel
 
-• **batteryLevel**(): *undefined* \| *number*
+• get **batteryLevel**(): *undefined* \| *number*
 
 Ortho Remote device battery level
 
@@ -67,17 +57,17 @@ ___
 
 ### connect
 
-• **connect**(`config?`: [*OrthoRemoteConfig*](../interfaces/orthoremoteconfig.md)): *Promise*<*boolean*\>
+• **connect**(`config?`: [*OrthoRemoteConfig*](../interfaces/orthoremoteconfig.md)): *Promise*<boolean\>
 
 Connects to the device, if not already connected
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`config?` | [*OrthoRemoteConfig*](../interfaces/orthoremoteconfig.md) |
+| Name | Type |
+| :------ | :------ |
+| `config?` | [*OrthoRemoteConfig*](../interfaces/orthoremoteconfig.md) |
 
-**Returns:** *Promise*<*boolean*\>
+**Returns:** *Promise*<boolean\>
 
 a Promise with `true` to indicate a successful connection
 
@@ -95,7 +85,7 @@ ___
 
 ### rotation
 
-• **rotation**(): *number*
+• get **rotation**(): *number*
 
 Ortho Remote rotation value, can be between 0.0 - 1.0 (normalized) or 0 - 127 (raw)
 
@@ -105,7 +95,7 @@ ___
 
 ### rssi
 
-• **rssi**(): *undefined* \| *number*
+• get **rssi**(): *undefined* \| *number*
 
 Ortho Remote device RSSI
 
@@ -131,7 +121,7 @@ Associated peripheral
 
 ### id
 
-• **id**(): *string*
+• get **id**(): *string*
 
 Ortho Remote device identifier
 
@@ -141,7 +131,7 @@ ___
 
 ### isConnected
 
-• **isConnected**(): *boolean*
+• get **isConnected**(): *boolean*
 
 Indicates if there is a connection established to the Ortho Remote device
 
@@ -151,582 +141,682 @@ Indicates if there is a connection established to the Ortho Remote device
 
 ### addListener
 
-▸ **addListener**(`eventName`: *batteryLevel*, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
+▸ **addListener**(`eventName`: ``"batteryLevel"``, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`eventName` | *batteryLevel* |
-`listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
-
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **addListener**(`eventName`: *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* |
-`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"batteryLevel"`` |
+| `listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **addListener**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.addListener
 
-#### Parameters:
+▸ **addListener**(`eventName`: ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"``, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *error* |
-`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+#### Parameters
 
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **addListener**(`eventName`: *midi*, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *midi* |
-`listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` |
+| `listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **addListener**(`eventName`: *rotate*, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.addListener
 
-#### Parameters:
+▸ **addListener**(`eventName`: ``"error"``, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rotate* |
-`listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"error"`` |
+| `listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.addListener
+
+▸ **addListener**(`eventName`: ``"midi"``, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"midi"`` |
+| `listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **addListener**(`eventName`: *rssi*, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.addListener
 
-#### Parameters:
+▸ **addListener**(`eventName`: ``"rotate"``, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rssi* |
-`listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rotate"`` |
+| `listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.addListener
+
+▸ **addListener**(`eventName`: ``"rssi"``, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rssi"`` |
+| `listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.addListener
 
 ___
 
 ### emit
 
-▸ **emit**(`eventName`: *rotate*, `value`: *number*, `buttonPressed`: *boolean*): *boolean*
+▸ **emit**(`eventName`: ``"rotate"``, `value`: *number*, `buttonPressed`: *boolean*): *boolean*
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`eventName` | *rotate* |
-`value` | *number* |
-`buttonPressed` | *boolean* |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rotate"`` |
+| `value` | *number* |
+| `buttonPressed` | *boolean* |
 
 **Returns:** *boolean*
+
+Inherited from: EventEmitter.emit
 
 ___
 
 ### listenerCount
 
-▸ **listenerCount**(`type`: *batteryLevel* \| *rssi* \| *connect* \| *disconnect* \| *error* \| *midi* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* \| *rotate*): *number*
+▸ **listenerCount**(`type`: ``"batteryLevel"`` \| ``"rssi"`` \| ``"connect"`` \| ``"disconnect"`` \| ``"error"`` \| ``"midi"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` \| ``"rotate"``): *number*
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`type` | *batteryLevel* \| *rssi* \| *connect* \| *disconnect* \| *error* \| *midi* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* \| *rotate* |
+| Name | Type |
+| :------ | :------ |
+| `type` | ``"batteryLevel"`` \| ``"rssi"`` \| ``"connect"`` \| ``"disconnect"`` \| ``"error"`` \| ``"midi"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` \| ``"rotate"`` |
 
 **Returns:** *number*
+
+Inherited from: EventEmitter.listenerCount
 
 ___
 
 ### listeners
 
-▸ **listeners**(`eventName`: *batteryLevel*): [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)[]
+▸ **listeners**(`eventName`: ``"batteryLevel"``): [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)[]
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`eventName` | *batteryLevel* |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"batteryLevel"`` |
 
 **Returns:** [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)[]
 
-▸ **listeners**(`eventName`: *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick*): [*OnEventCallback*](../interfaces/oneventcallback.md)[]
+Inherited from: EventEmitter.listeners
 
-#### Parameters:
+▸ **listeners**(`eventName`: ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"``): [*OnEventCallback*](../interfaces/oneventcallback.md)[]
 
-Name | Type |
------- | ------ |
-`eventName` | *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` |
 
 **Returns:** [*OnEventCallback*](../interfaces/oneventcallback.md)[]
 
-▸ **listeners**(`eventName`: *error*): [*OnErrorCallback*](../interfaces/onerrorcallback.md)[]
+Inherited from: EventEmitter.listeners
 
-#### Parameters:
+▸ **listeners**(`eventName`: ``"error"``): [*OnErrorCallback*](../interfaces/onerrorcallback.md)[]
 
-Name | Type |
------- | ------ |
-`eventName` | *error* |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"error"`` |
 
 **Returns:** [*OnErrorCallback*](../interfaces/onerrorcallback.md)[]
 
-▸ **listeners**(`eventName`: *midi*): [*OnMidiCallback*](../interfaces/onmidicallback.md)[]
+Inherited from: EventEmitter.listeners
 
-#### Parameters:
+▸ **listeners**(`eventName`: ``"midi"``): [*OnMidiCallback*](../interfaces/onmidicallback.md)[]
 
-Name | Type |
------- | ------ |
-`eventName` | *midi* |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"midi"`` |
 
 **Returns:** [*OnMidiCallback*](../interfaces/onmidicallback.md)[]
 
-▸ **listeners**(`eventName`: *rotate*): [*OnRotateCallback*](../interfaces/onrotatecallback.md)[]
+Inherited from: EventEmitter.listeners
 
-#### Parameters:
+▸ **listeners**(`eventName`: ``"rotate"``): [*OnRotateCallback*](../interfaces/onrotatecallback.md)[]
 
-Name | Type |
------- | ------ |
-`eventName` | *rotate* |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rotate"`` |
 
 **Returns:** [*OnRotateCallback*](../interfaces/onrotatecallback.md)[]
 
-▸ **listeners**(`eventName`: *rssi*): [*OnRssiCallback*](../interfaces/onrssicallback.md)[]
+Inherited from: EventEmitter.listeners
 
-#### Parameters:
+▸ **listeners**(`eventName`: ``"rssi"``): [*OnRssiCallback*](../interfaces/onrssicallback.md)[]
 
-Name | Type |
------- | ------ |
-`eventName` | *rssi* |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rssi"`` |
 
 **Returns:** [*OnRssiCallback*](../interfaces/onrssicallback.md)[]
+
+Inherited from: EventEmitter.listeners
 
 ___
 
 ### off
 
-▸ **off**(`eventName`: *batteryLevel*, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
+▸ **off**(`eventName`: ``"batteryLevel"``, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`eventName` | *batteryLevel* |
-`listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
-
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **off**(`eventName`: *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* |
-`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"batteryLevel"`` |
+| `listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **off**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.off
 
-#### Parameters:
+▸ **off**(`eventName`: ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"``, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *error* |
-`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+#### Parameters
 
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **off**(`eventName`: *midi*, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *midi* |
-`listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` |
+| `listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **off**(`eventName`: *rotate*, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.off
 
-#### Parameters:
+▸ **off**(`eventName`: ``"error"``, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rotate* |
-`listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"error"`` |
+| `listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.off
+
+▸ **off**(`eventName`: ``"midi"``, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"midi"`` |
+| `listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **off**(`eventName`: *rssi*, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.off
 
-#### Parameters:
+▸ **off**(`eventName`: ``"rotate"``, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rssi* |
-`listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rotate"`` |
+| `listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.off
+
+▸ **off**(`eventName`: ``"rssi"``, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rssi"`` |
+| `listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.off
 
 ___
 
 ### on
 
-▸ **on**(`eventName`: *batteryLevel*, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
+▸ **on**(`eventName`: ``"batteryLevel"``, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`eventName` | *batteryLevel* |
-`listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
-
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **on**(`eventName`: *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* |
-`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"batteryLevel"`` |
+| `listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **on**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.on
 
-#### Parameters:
+▸ **on**(`eventName`: ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"``, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *error* |
-`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+#### Parameters
 
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **on**(`eventName`: *midi*, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *midi* |
-`listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` |
+| `listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **on**(`eventName`: *rotate*, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.on
 
-#### Parameters:
+▸ **on**(`eventName`: ``"error"``, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rotate* |
-`listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"error"`` |
+| `listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.on
+
+▸ **on**(`eventName`: ``"midi"``, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"midi"`` |
+| `listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **on**(`eventName`: *rssi*, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.on
 
-#### Parameters:
+▸ **on**(`eventName`: ``"rotate"``, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rssi* |
-`listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rotate"`` |
+| `listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.on
+
+▸ **on**(`eventName`: ``"rssi"``, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rssi"`` |
+| `listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.on
 
 ___
 
 ### once
 
-▸ **once**(`eventName`: *batteryLevel*, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
+▸ **once**(`eventName`: ``"batteryLevel"``, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`eventName` | *batteryLevel* |
-`listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
-
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **once**(`eventName`: *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* |
-`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"batteryLevel"`` |
+| `listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **once**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.once
 
-#### Parameters:
+▸ **once**(`eventName`: ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"``, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *error* |
-`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+#### Parameters
 
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **once**(`eventName`: *midi*, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *midi* |
-`listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` |
+| `listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **once**(`eventName`: *rotate*, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.once
 
-#### Parameters:
+▸ **once**(`eventName`: ``"error"``, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rotate* |
-`listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"error"`` |
+| `listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.once
+
+▸ **once**(`eventName`: ``"midi"``, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"midi"`` |
+| `listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **once**(`eventName`: *rssi*, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.once
 
-#### Parameters:
+▸ **once**(`eventName`: ``"rotate"``, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rssi* |
-`listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rotate"`` |
+| `listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.once
+
+▸ **once**(`eventName`: ``"rssi"``, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rssi"`` |
+| `listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.once
 
 ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`: *batteryLevel*, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
+▸ **prependListener**(`eventName`: ``"batteryLevel"``, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`eventName` | *batteryLevel* |
-`listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
-
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **prependListener**(`eventName`: *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* |
-`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"batteryLevel"`` |
+| `listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **prependListener**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.prependListener
 
-#### Parameters:
+▸ **prependListener**(`eventName`: ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"``, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *error* |
-`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+#### Parameters
 
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **prependListener**(`eventName`: *midi*, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *midi* |
-`listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` |
+| `listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **prependListener**(`eventName`: *rotate*, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.prependListener
 
-#### Parameters:
+▸ **prependListener**(`eventName`: ``"error"``, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rotate* |
-`listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"error"`` |
+| `listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.prependListener
+
+▸ **prependListener**(`eventName`: ``"midi"``, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"midi"`` |
+| `listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **prependListener**(`eventName`: *rssi*, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.prependListener
 
-#### Parameters:
+▸ **prependListener**(`eventName`: ``"rotate"``, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rssi* |
-`listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rotate"`` |
+| `listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.prependListener
+
+▸ **prependListener**(`eventName`: ``"rssi"``, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rssi"`` |
+| `listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.prependListener
 
 ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`: *batteryLevel*, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
+▸ **prependOnceListener**(`eventName`: ``"batteryLevel"``, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`eventName` | *batteryLevel* |
-`listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
-
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **prependOnceListener**(`eventName`: *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* |
-`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"batteryLevel"`` |
+| `listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **prependOnceListener**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.prependOnceListener
 
-#### Parameters:
+▸ **prependOnceListener**(`eventName`: ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"``, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *error* |
-`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+#### Parameters
 
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **prependOnceListener**(`eventName`: *midi*, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *midi* |
-`listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` |
+| `listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **prependOnceListener**(`eventName`: *rotate*, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.prependOnceListener
 
-#### Parameters:
+▸ **prependOnceListener**(`eventName`: ``"error"``, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rotate* |
-`listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"error"`` |
+| `listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.prependOnceListener
+
+▸ **prependOnceListener**(`eventName`: ``"midi"``, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"midi"`` |
+| `listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **prependOnceListener**(`eventName`: *rssi*, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.prependOnceListener
 
-#### Parameters:
+▸ **prependOnceListener**(`eventName`: ``"rotate"``, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rssi* |
-`listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rotate"`` |
+| `listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.prependOnceListener
+
+▸ **prependOnceListener**(`eventName`: ``"rssi"``, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rssi"`` |
+| `listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.prependOnceListener
 
 ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`: *batteryLevel*, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
+▸ **removeListener**(`eventName`: ``"batteryLevel"``, `listener`: [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`eventName` | *batteryLevel* |
-`listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
-
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **removeListener**(`eventName`: *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick*, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *connect* \| *disconnect* \| *buttonPressed* \| *buttonReleased* \| *click* \| *longClick* |
-`listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"batteryLevel"`` |
+| `listener` | [*OnBatteryLeveCallback*](../interfaces/onbatterylevecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **removeListener**(`eventName`: *error*, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.removeListener
 
-#### Parameters:
+▸ **removeListener**(`eventName`: ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"``, `listener`: [*OnEventCallback*](../interfaces/oneventcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *error* |
-`listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+#### Parameters
 
-**Returns:** [*OrthoRemote*](orthoremote.md)
-
-▸ **removeListener**(`eventName`: *midi*, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`eventName` | *midi* |
-`listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"connect"`` \| ``"disconnect"`` \| ``"buttonPressed"`` \| ``"buttonReleased"`` \| ``"click"`` \| ``"longClick"`` |
+| `listener` | [*OnEventCallback*](../interfaces/oneventcallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **removeListener**(`eventName`: *rotate*, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.removeListener
 
-#### Parameters:
+▸ **removeListener**(`eventName`: ``"error"``, `listener`: [*OnErrorCallback*](../interfaces/onerrorcallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rotate* |
-`listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"error"`` |
+| `listener` | [*OnErrorCallback*](../interfaces/onerrorcallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.removeListener
+
+▸ **removeListener**(`eventName`: ``"midi"``, `listener`: [*OnMidiCallback*](../interfaces/onmidicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"midi"`` |
+| `listener` | [*OnMidiCallback*](../interfaces/onmidicallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
 
-▸ **removeListener**(`eventName`: *rssi*, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+Inherited from: EventEmitter.removeListener
 
-#### Parameters:
+▸ **removeListener**(`eventName`: ``"rotate"``, `listener`: [*OnRotateCallback*](../interfaces/onrotatecallback.md)): [*OrthoRemote*](orthoremote.md)
 
-Name | Type |
------- | ------ |
-`eventName` | *rssi* |
-`listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rotate"`` |
+| `listener` | [*OnRotateCallback*](../interfaces/onrotatecallback.md) |
 
 **Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.removeListener
+
+▸ **removeListener**(`eventName`: ``"rssi"``, `listener`: [*OnRssiCallback*](../interfaces/onrssicallback.md)): [*OrthoRemote*](orthoremote.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `eventName` | ``"rssi"`` |
+| `listener` | [*OnRssiCallback*](../interfaces/onrssicallback.md) |
+
+**Returns:** [*OrthoRemote*](orthoremote.md)
+
+Inherited from: EventEmitter.removeListener
