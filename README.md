@@ -8,7 +8,7 @@ The `ortho-remote` package is designed to support multiple devices simultaneousl
 
 For more information on BLE-MIDI see [midi.org](https://www.midi.org/midi/specifications/item/bluetooth-le-midi)
 
-![Ortho Remote](https://github.com/pryomoax/ortho-remote-node/raw/master/assets/ortho.png)
+![Ortho Remote](https://github.com/pryomoax/ortho-remote-node/raw/main/assets/ortho.png)
 
 - [Installation](#installation)
 - [Troubleshooting](#troubleshooting)
