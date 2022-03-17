@@ -1,7 +1,7 @@
-import * as createDebugLogger from 'debug'
 import * as noble from '@abandonware/noble'
 import * as weak from 'weak-napi'
 
+import { debug as createDebugLogger } from 'debug'
 import { EventEmitter } from 'events'
 import { Peripheral } from '@abandonware/noble'
 

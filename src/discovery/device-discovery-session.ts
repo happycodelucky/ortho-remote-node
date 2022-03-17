@@ -1,5 +1,4 @@
-import * as createDebugLogger from 'debug'
-
+import { debug as createDebugLogger } from 'debug'
 import { EventEmitter } from 'events'
 import { setTimeout } from 'timers'
 

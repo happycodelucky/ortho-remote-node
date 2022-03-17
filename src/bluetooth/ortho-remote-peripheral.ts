@@ -1,7 +1,7 @@
 import * as check from 'check-types'
-import * as createDebugLogger from 'debug'
 
 import { Characteristic, Peripheral, Service } from '@abandonware/noble'
+import { debug as createDebugLogger } from 'debug'
 import { EventEmitter } from 'events'
 
 import { DEVICE_CONNECT_TIMEOUT_MS } from '../defaults'

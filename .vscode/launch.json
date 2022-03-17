@@ -8,10 +8,12 @@
             "type": "node",
             "request": "launch",
             "name": "01 - Device Discovery",
-            "program": "${workspaceFolder}/node_modules/.bin/ts-node",
             "args": [
                 "./examples/01-device-discovery/example-device-discovery.ts"
             ],
+            "runtimeArgs": [
+                "-r", "ts-node/register"
+             ],
             "env": {
                 "TS_PROJECT": "./examples/tsconfig.json",
             },
@@ -24,10 +26,12 @@
             "type": "node",
             "request": "launch",
             "name": "02 - Events",
-            "program": "${workspaceFolder}/node_modules/.bin/ts-node",
             "args": [
                 "./examples/02-events/example-events.ts"
             ],
+            "runtimeArgs": [
+                "-r", "ts-node/register"
+             ],
             "env": {
                 "TS_PROJECT": "./examples/tsconfig.json"
             },

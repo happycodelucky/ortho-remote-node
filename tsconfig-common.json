@@ -3,12 +3,15 @@
         "alwaysStrict": true,
         "allowUnreachableCode": false,
         "allowUnusedLabels": true,
+        "esModuleInterop": false,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
         "importHelpers": true,
+        "incremental": true,
         "inlineSources": true,
         "keyofStringsOnly": true,
         "module": "commonjs",
+        "moduleResolution": "node",
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noEmitOnError": false,
@@ -24,7 +27,11 @@
         "strictNullChecks": true,
         "strictPropertyInitialization": true,
         "stripInternal": true,
-        "target": "ES2020",
+        "target": "ES2021",
+        "tsBuildInfoFile": "tsconfig.tsbuildinfo",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     },
     "typeAcquisition": {
         "enable": true,
